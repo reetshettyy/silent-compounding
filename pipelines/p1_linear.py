@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+from time import perf_counter
 from typing import TypedDict
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -12,6 +13,8 @@ from agents.research_agent import research_node
 from agents.summarizer_agent import summarize_node
 from agents.action_agent import action_node
 from injection.injector import inject_error
+from retrieval.build_index import load_documents
+from retrieval.bm25_retriever import BM25Retriever
 from tracing.logger import log_run, save_raw_trace
 
 
@@ -29,16 +32,47 @@ class PipelineState(TypedDict):
 
 
 def research_node_adapter(state):
+    top_k = 5
+    retrieval_start = perf_counter()
+
+    results = retriever.retrieve(
+        query=state["question"],
+        top_k=top_k,
+    )
+
+    retrieval_latency = perf_counter() - retrieval_start
+
+    state["trace"].append(
+        {
+            "agent": "retriever",
+            "retrieval": {
+                "query": state["question"],
+                "retriever_type": "BM25",
+                "top_k": top_k,
+                "retrieved_document_ids": [
+                    result["doc_id"] for result in results
+                ],
+                "retrieved_titles": [
+                    result["title"] for result in results
+                ],
+                "retrieval_scores": [
+                    result["score"] for result in results
+                ],
+                "retrieval_rank": [
+                    result["rank"] for result in results
+                ],
+                "retrieval_latency": retrieval_latency,
+            },
+        }
+    )
+
     context_text = ""
 
-    for title, sentences in zip(
-        state["context"]["title"],
-        state["context"]["sentences"],
-    ):
-        context_text += f"\\nTITLE: {title}\\n"
-
-        for sentence in sentences:
-            context_text += f"{sentence}\\n"
+    for result in results:
+        context_text += (
+            f"\\nTITLE: {result['title']}\\n"
+            f"{result['text']}\\n"
+        )
 
     agent_input = {
         "task_id": state["task_id"],
@@ -139,6 +173,9 @@ def action_node_adapter(state):
         "trace": result["trace"],
     }
 
+
+documents = load_documents("tasks/hotpotqa_sample.json")
+retriever = BM25Retriever(documents)
 
 graph = StateGraph(PipelineState)
 
