@@ -6,6 +6,8 @@ def inject_error(
     clean_output: str,
     error_type: str,
     wording: str,
+    injection_stage: str,
+    seed: int | None = None,
 ):
     if not clean_output:
         raise ValueError("clean_output cannot be empty.")
@@ -16,9 +18,15 @@ def inject_error(
     if not wording:
         raise ValueError("wording cannot be empty.")
 
+    if injection_stage not in {"research", "summary"}:
+        raise ValueError(
+            "injection_stage must be 'research' or 'summary'."
+        )
+
     error_template = generate_corrupted_claim(
         research_output=clean_output,
         error_type=error_type,
+        seed=seed,
     )
 
     original_claim = error_template.original_claim_pattern

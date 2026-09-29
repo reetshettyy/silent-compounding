@@ -29,6 +29,7 @@ class PipelineState(TypedDict):
     inject: bool
     error_type: str | None
     wording: str | None
+    seed: int | None
 
 
 def research_node_adapter(state):
@@ -113,6 +114,8 @@ def research_node_adapter(state):
         clean_output=clean_output,
         error_type=error_type,
         wording=wording,
+        injection_stage="research",
+        seed=state.get("seed"),
     )
 
     injected_research_output = dict(research_output)
@@ -123,10 +126,11 @@ def research_node_adapter(state):
             "agent": "error_injector",
             "output": {
                 "error_type": error_template.error_type,
+                "injection_stage": "research",
                 "wording": wording,
                 "original_claim": error_template.original_claim_pattern,
                 "injected_claim": error_template.injected_claim,
-                "description": error_template.description,
+                "injection_description": error_template.description,
                 "corrupted_output": corrupted_output,
             },
         }
@@ -197,6 +201,7 @@ def run_pipeline(
     inject=False,
     error_type=None,
     wording=None,
+    seed=None,
 ):
     initial_state = {
         "task_id": task["task_id"],
@@ -209,6 +214,7 @@ def run_pipeline(
         "inject": inject,
         "error_type": error_type,
         "wording": wording,
+        "seed": seed,
     }
 
     return pipeline.invoke(initial_state)

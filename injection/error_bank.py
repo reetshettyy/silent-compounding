@@ -21,11 +21,13 @@ ERROR_BANK = {
 }
 
 
-LLM = ChatOllama(
-    model="llama3.1",
-    temperature=0,
-    num_predict=250,
-)
+def _build_llm(seed: int | None = None):
+    return ChatOllama(
+        model="llama3.1",
+        temperature=0,
+        num_predict=250,
+        seed=seed,
+    )
 
 
 def _extract_numbers(text: str) -> list[str]:
@@ -230,6 +232,7 @@ def _validate_corruption(
 
 def _generate_factual_corruption(
     original_claim: str,
+    llm,
 ) -> ErrorTemplate:
     """
     Ask the LLM to identify one factual element to replace.
@@ -272,7 +275,7 @@ The target MUST appear exactly in the original claim.
 The replacement must represent a false but plausible fact.
 """
 
-    response = LLM.invoke(prompt)
+    response = llm.invoke(prompt)
 
     raw = response.content.strip()
 
@@ -328,6 +331,7 @@ The replacement must represent a false but plausible fact.
 
 def _generate_numerical_corruption(
     original_claim: str,
+    llm,
 ) -> ErrorTemplate:
     numbers = _extract_numbers(original_claim)
 
@@ -367,7 +371,7 @@ Format:
 }}
 """
 
-    response = LLM.invoke(prompt)
+    response = llm.invoke(prompt)
 
     raw = response.content.strip()
 
@@ -423,6 +427,7 @@ Format:
 
 def _generate_false_premise_corruption(
     original_claim: str,
+    llm,
 ) -> ErrorTemplate:
     prompt = f"""
 You are creating a controlled false-premise error for an experiment.
@@ -447,7 +452,7 @@ Do not change existing facts.
 Do not change numbers.
 """
 
-    response = LLM.invoke(prompt)
+    response = llm.invoke(prompt)
 
     raw = response.content.strip()
 
@@ -487,6 +492,7 @@ Do not change numbers.
 def generate_corrupted_claim(
     research_output: str,
     error_type: str,
+    seed: int | None = None,
 ) -> ErrorTemplate:
     if not research_output:
         raise ValueError(
@@ -507,18 +513,22 @@ def generate_corrupted_claim(
         research_output
     )
 
+    llm = _build_llm(seed=seed)
+
     if error_type == "factual":
         original_claim = candidates[0]
 
         template = _generate_factual_corruption(
-            original_claim
+            original_claim,
+            llm,
         )
 
     elif error_type == "false_premise":
         original_claim = candidates[0]
 
         template = _generate_false_premise_corruption(
-            original_claim
+            original_claim,
+            llm,
         )
 
     else:
@@ -537,7 +547,8 @@ def generate_corrupted_claim(
         original_claim = numerical_candidates[0]
 
         template = _generate_numerical_corruption(
-            original_claim
+            original_claim,
+            llm,
         )
 
     _validate_corruption(
