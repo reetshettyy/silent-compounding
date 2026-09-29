@@ -1,6 +1,19 @@
-import re
+from typing import TypedDict
 
 from langchain_ollama import ChatOllama
+
+
+class AgentInput(TypedDict):
+    task_id: str
+    input_question: str
+    retrieved_context: str
+
+
+class TaskRecord(TypedDict):
+    gold_answer: str
+    supporting_facts: list
+    original_question: str
+    original_context: str
 
 llm = ChatOllama(model="llama3.1", temperature=0.5, max_tokens=250)
 
@@ -9,55 +22,44 @@ def call_llm(prompt: str) -> str:
     return llm.invoke(prompt).content
 
 
-def summarize_node(state):
-    research_output = state["research_output"]
-
-    prompt = f"""
+def build_summarizer_prompt(agent_input: AgentInput) -> str:
+    return f"""
 Summarize the following research output.
 
 Preserve:
 - The main finding
 - The important supporting facts
-- The stated confidence
 
 Do not add new facts or information that is not present in the research output.
 
 Research output:
 
-{research_output}
+{agent_input["retrieved_context"]}
 
 Respond in exactly this format:
 
 SUMMARY: <concise summary of the main finding and supporting facts>
 
-CONFIDENCE (0-1): <the confidence stated in the research output>
 """
 
+
+def summarize_node(agent_input: AgentInput, trace=None):
+    prompt = build_summarizer_prompt(agent_input)
     output = call_llm(prompt)
-
-    confidence = 0.0
-
-    match = re.search(
-        r"CONFIDENCE(?:\s*\(0-1\))?\s*:\s*(0(?:\.\d+)?|1(?:\.0+)?)",
-        output,
-        re.IGNORECASE
-    )
-
-    if match:
-        confidence = float(match.group(1))
 
     structured_output = {
         "output": output,
-        "confidence": confidence
     }
 
-    trace = state.get("trace", [])
-    trace.append({
-        "agent": "summarizer",
-        "output": structured_output
-    })
+    trace = [] if trace is None else trace
+    trace.append(
+        {
+            "agent": "summarizer",
+            "output": structured_output,
+        }
+    )
 
     return {
         "summary_output": structured_output,
-        "trace": trace
+        "trace": trace,
     }

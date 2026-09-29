@@ -1,6 +1,19 @@
-import re
+from typing import TypedDict
 
 from langchain_ollama import ChatOllama
+
+
+class AgentInput(TypedDict):
+    task_id: str
+    input_question: str
+    retrieved_context: str
+
+
+class TaskRecord(TypedDict):
+    gold_answer: str
+    supporting_facts: list
+    original_question: str
+    original_context: str
 
 
 llm = ChatOllama(
@@ -14,22 +27,8 @@ def call_llm(prompt: str) -> str:
     return llm.invoke(prompt).content
 
 
-def research_node(state):
-    question = state["question"]
-    context = state["context"]
-
-    context_text = ""
-
-    for title, sentences in zip(
-        context["title"],
-        context["sentences"],
-    ):
-        context_text += f"\nTITLE: {title}\n"
-
-        for sentence in sentences:
-            context_text += f"{sentence}\n"
-
-    prompt = f"""
+def build_research_prompt(agent_input: AgentInput) -> str:
+    return f"""
 Answer the following question using ONLY the provided HotpotQA context.
 
 Do not use outside knowledge.
@@ -38,10 +37,10 @@ Do not claim that you searched Google, websites, databases, or other sources.
 Do not mention sources that are not present in the provided context.
 
 Question:
-{question}
+{agent_input["input_question"]}
 
 Provided context:
-{context_text}
+{agent_input["retrieved_context"]}
 
 Identify the relevant facts from the context and use them to answer the question.
 
@@ -51,28 +50,18 @@ FINDING: <your answer or main finding>
 
 EVIDENCE: <the specific facts from the provided context that support the finding>
 
-CONFIDENCE (0-1): <your confidence in the finding, as a number between 0 and 1>
 """
 
+
+def research_node(agent_input: AgentInput, trace=None):
+    prompt = build_research_prompt(agent_input)
     output = call_llm(prompt)
-
-    confidence = 0.0
-
-    match = re.search(
-        r"CONFIDENCE(?:\s*\(0-1\))?\s*:\s*(0(?:\.\d+)?|1(?:\.0+)?)",
-        output,
-        re.IGNORECASE,
-    )
-
-    if match:
-        confidence = float(match.group(1))
 
     structured_output = {
         "output": output,
-        "confidence": confidence,
     }
 
-    trace = state.get("trace", [])
+    trace = [] if trace is None else trace
     trace.append(
         {
             "agent": "research",

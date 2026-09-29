@@ -16,6 +16,7 @@ from tracing.logger import log_run, save_raw_trace
 
 
 class PipelineState(TypedDict):
+    task_id: str
     question: str
     context: dict
     research_output: dict
@@ -28,12 +29,26 @@ class PipelineState(TypedDict):
 
 
 def research_node_adapter(state):
+    context_text = ""
+
+    for title, sentences in zip(
+        state["context"]["title"],
+        state["context"]["sentences"],
+    ):
+        context_text += f"\\nTITLE: {title}\\n"
+
+        for sentence in sentences:
+            context_text += f"{sentence}\\n"
+
+    agent_input = {
+        "task_id": state["task_id"],
+        "input_question": state["question"],
+        "retrieved_context": context_text,
+    }
+
     result = research_node(
-        {
-            "question": state["question"],
-            "context": state["context"],
-            "trace": state["trace"],
-        }
+        agent_input,
+        trace=state["trace"],
     )
 
     research_output = result["research_output"]
@@ -90,11 +105,15 @@ def research_node_adapter(state):
 
 
 def summarize_node_adapter(state):
+    agent_input = {
+        "task_id": state["task_id"],
+        "input_question": state["question"],
+        "retrieved_context": state["research_output"]["output"],
+    }
+
     result = summarize_node(
-        {
-            "research_output": state["research_output"],
-            "trace": state["trace"],
-        }
+        agent_input,
+        trace=state["trace"],
     )
 
     return {
@@ -104,12 +123,15 @@ def summarize_node_adapter(state):
 
 
 def action_node_adapter(state):
+    agent_input = {
+        "task_id": state["task_id"],
+        "input_question": state["question"],
+        "retrieved_context": state["summary"]["output"],
+    }
+
     result = action_node(
-        {
-            "question": state["question"],
-            "summary_output": state["summary"],
-            "trace": state["trace"],
-        }
+        agent_input,
+        trace=state["trace"],
     )
 
     return {
@@ -140,6 +162,7 @@ def run_pipeline(
     wording=None,
 ):
     initial_state = {
+        "task_id": task["task_id"],
         "question": task["question"],
         "context": task["context"],
         "research_output": {},

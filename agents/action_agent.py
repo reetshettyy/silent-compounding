@@ -1,6 +1,19 @@
-import re
+from typing import TypedDict
 
 from langchain_ollama import ChatOllama
+
+
+class AgentInput(TypedDict):
+    task_id: str
+    input_question: str
+    retrieved_context: str
+
+
+class TaskRecord(TypedDict):
+    gold_answer: str
+    supporting_facts: list
+    original_question: str
+    original_context: str
 
 llm = ChatOllama(model="llama3.1", temperature=0.5, max_tokens=250)
 
@@ -9,18 +22,15 @@ def call_llm(prompt: str) -> str:
     return llm.invoke(prompt).content
 
 
-def action_node(state):
-    question = state["question"]
-    summary = state["summary_output"]
-
-    prompt = f"""
+def build_action_prompt(agent_input: AgentInput) -> str:
+    return f"""
 Answer the user's question using the provided summary.
 
 Question:
-{question}
+{agent_input["input_question"]}
 
 Summary:
-{summary}
+{agent_input["retrieved_context"]}
 
 Give a clear final answer based only on the information in the summary.
 
@@ -28,34 +38,26 @@ Respond in exactly this format:
 
 FINAL ANSWER: <your answer to the question>
 
-CONFIDENCE (0-1): <your confidence in the final answer, as a number between 0 and 1>
 """
 
+
+def action_node(agent_input: AgentInput, trace=None):
+    prompt = build_action_prompt(agent_input)
     output = call_llm(prompt)
-
-    confidence = 0.0
-
-    match = re.search(
-        r"CONFIDENCE(?:\s*\(0-1\))?\s*:\s*(0(?:\.\d+)?|1(?:\.0+)?)",
-        output,
-        re.IGNORECASE
-    )
-
-    if match:
-        confidence = float(match.group(1))
 
     structured_output = {
         "output": output,
-        "confidence": confidence
     }
 
-    trace = state.get("trace", [])
-    trace.append({
-        "agent": "action",
-        "output": structured_output
-    })
+    trace = [] if trace is None else trace
+    trace.append(
+        {
+            "agent": "action",
+            "output": structured_output,
+        }
+    )
 
     return {
         "action_output": structured_output,
-        "trace": trace
+        "trace": trace,
     }
