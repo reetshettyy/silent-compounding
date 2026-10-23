@@ -256,10 +256,9 @@ if __name__ == "__main__":
                 "correction_stage": None,
                 "final_error": None,
                 "severity": None,
-                "self_reported_confidence": final_answer.get(
-                    "confidence",
-                    None,
-                ),
+                # Retained in the CSV schema for legacy compatibility.
+                # Current methodology does not collect confidence scores.
+                "self_reported_confidence": None,
                 "actual_correct": None,
                 "raw_trace_path": raw_trace_path,
             }

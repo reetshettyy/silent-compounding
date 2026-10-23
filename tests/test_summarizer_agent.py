@@ -1,20 +1,30 @@
-from agents.summarizer_agent import summarize_node
+import agents.summarizer_agent as summarizer_agent
 
 
-def test_summarizer_agent():
-    result = summarize_node({
-        "research_output": {
-            "output": (
-                "Jupiter is the largest planet in our solar system. "
-                "It is a gas giant and is larger than all the other planets combined."
+def test_summarizer_agent(monkeypatch):
+    monkeypatch.setattr(
+        summarizer_agent,
+        "call_llm",
+        lambda prompt: (
+            "SUMMARY: Jupiter is the largest planet in our solar system."
+        ),
+    )
+
+    result = summarizer_agent.summarize_node(
+        {
+            "task_id": "test-001",
+            "input_question": "What is the largest planet?",
+            "retrieved_context": (
+                "FINDING: Jupiter is the largest planet.\n"
+                "EVIDENCE: The provided context states this."
             ),
-            "confidence": 1.0
-        },
-        "trace": []
-    })
+        }
+    )
 
     output = result["summary_output"]
 
     assert isinstance(output["output"], str)
-    assert len(output["output"].strip()) > 0
-    assert 0.0 <= output["confidence"] <= 1.0
+    assert output["output"].strip()
+    assert "confidence" not in output
+    assert len(result["trace"]) == 1
+    assert result["trace"][0]["agent"] == "summarizer"

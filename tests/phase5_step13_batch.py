@@ -18,7 +18,7 @@ from injection.error_bank import (
     _extract_candidate_claims,
     _extract_numbers,
 )
-from pipelines.p1_linear import run_pipeline
+from pipelines.p1_linear import retriever, run_pipeline
 
 
 RANDOM_SEED = 42
@@ -52,11 +52,24 @@ def load_tasks():
 
 
 def get_research_output(task):
+    results = retriever.retrieve(
+        query=task["question"],
+        top_k=5,
+    )
+
+    context_text = ""
+
+    for result in results:
+        context_text += (
+            f"\nTITLE: {result['title']}\n"
+            f"{result['text']}\n"
+        )
+
     result = research_node(
         {
-            "question": task["question"],
-            "context": task["context"],
-            "trace": [],
+            "task_id": task["task_id"],
+            "input_question": task["question"],
+            "retrieved_context": context_text,
         }
     )
 
