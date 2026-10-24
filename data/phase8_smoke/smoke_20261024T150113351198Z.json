@@ -1,0 +1,217 @@
+{
+  "status": "technical_smoke_test_not_experimental_result",
+  "labels": "automated (rule_based_injection_point + independent_judge)",
+  "runs": [
+    {
+      "run_id": "HQ00_num",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "amplified",
+        "final": "amplified"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 2,
+        "final": 2
+      }
+    },
+    {
+      "run_id": "HQ01_num",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "uncertain",
+        "final": "uncertain"
+      },
+      "severities": {
+        "research": 1,
+        "summary": null,
+        "final": null
+      }
+    },
+    {
+      "run_id": "HQ02",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "amplified",
+        "final": "amplified"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 2,
+        "final": 2
+      }
+    },
+    {
+      "run_id": "HQ05",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "corrected",
+        "final": "corrected"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 0,
+        "final": 0
+      }
+    },
+    {
+      "run_id": "HQ05_num",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "corrected",
+        "final": "corrected"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 0,
+        "final": 0
+      }
+    },
+    {
+      "run_id": "HQ06",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "amplified",
+        "final": "uncertain"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 2,
+        "final": null
+      }
+    },
+    {
+      "run_id": "HQ06_num",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "survived",
+        "final": "survived"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 1,
+        "final": 1
+      }
+    },
+    {
+      "run_id": "HQ07",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "uncertain",
+        "final": "uncertain"
+      },
+      "severities": {
+        "research": 1,
+        "summary": null,
+        "final": null
+      }
+    },
+    {
+      "run_id": "HQ08",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "amplified",
+        "final": "amplified"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 2,
+        "final": 2
+      }
+    },
+    {
+      "run_id": "HQ08_num",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "amplified",
+        "final": "corrected"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 2,
+        "final": 0
+      }
+    },
+    {
+      "run_id": "HQ09",
+      "injection_stage": "research",
+      "outcomes": {
+        "research": "survived",
+        "summary": "amplified",
+        "final": "corrected"
+      },
+      "severities": {
+        "research": 1,
+        "summary": 2,
+        "final": null
+      }
+    }
+  ],
+  "esr": {
+    "summary": {
+      "rate": 0.7777777777777778,
+      "numerator": 7,
+      "denominator": 9,
+      "n_uncertain": 2
+    },
+    "final": {
+      "rate": 0.5,
+      "numerator": 4,
+      "denominator": 8,
+      "n_uncertain": 3
+    }
+  },
+  "ecr": {
+    "summary": {
+      "rate": 0.2222222222222222,
+      "numerator": 2,
+      "denominator": 9,
+      "n_uncertain": 2
+    },
+    "final": {
+      "rate": 0.5,
+      "numerator": 4,
+      "denominator": 8,
+      "n_uncertain": 3
+    }
+  },
+  "fepr": {
+    "rate": 0.5,
+    "numerator": 4,
+    "denominator": 8,
+    "n_total": 11,
+    "n_uncertain": 3,
+    "lower_bound": 0.36363636363636365,
+    "upper_bound": 0.6363636363636364
+  },
+  "acceptance": {
+    "rate": 0.6470588235294118,
+    "numerator": 11,
+    "denominator": 17
+  },
+  "point_of_correction": {
+    "summary": 2,
+    "final": 2,
+    "never": 7
+  },
+  "mean_amplification_factor": {
+    "mean": 1.4444444444444444,
+    "n": 9,
+    "n_undefined": 2
+  },
+  "limitations": [
+    "Severity 3 not produced automatically.",
+    "Severity 4 uses exact-containment match against gold (baseline correct, injected not).",
+    "Only research-stage injection in this sample."
+  ]
+}
