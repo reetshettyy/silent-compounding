@@ -121,6 +121,19 @@ def research_node_adapter(state):
     injected_research_output = dict(research_output)
     injected_research_output["output"] = corrupted_output
 
+    # Preserve the clean output for auditability.
+    original_output = clean_output
+
+    # Ensure the trace records what the summarizer actually receives.
+    for trace_item in reversed(trace):
+        if trace_item.get("agent") == "research":
+            trace_item["output"] = dict(injected_research_output)
+            break
+    else:
+        raise RuntimeError(
+            "Cannot record injected output: research trace entry is missing."
+        )
+
     trace.append(
         {
             "agent": "error_injector",
@@ -128,6 +141,7 @@ def research_node_adapter(state):
                 "error_type": error_template.error_type,
                 "injection_stage": "research",
                 "wording": wording,
+                "original_output": original_output,
                 "original_claim": error_template.original_claim_pattern,
                 "injected_claim": error_template.injected_claim,
                 "injection_description": error_template.description,
@@ -203,6 +217,10 @@ def run_pipeline(
     wording=None,
     seed=None,
 ):
+    from tracing.model_registry import load_model_config, validate_model_registry
+
+    validate_model_registry(load_model_config())
+
     initial_state = {
         "task_id": task["task_id"],
         "question": task["question"],

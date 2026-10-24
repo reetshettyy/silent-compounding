@@ -1,0 +1,9 @@
+models:
+  research_model: "llama3.1:latest"
+  summarizer_model: "llama3.1:latest"
+  answer_model: "llama3.1:latest"
+  evaluator_model: "mistral:latest"
+
+retrieval:
+  retriever_type: "BM25"
+  top_k: 5

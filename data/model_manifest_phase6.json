@@ -1,0 +1,19 @@
+{
+  "models": {
+    "research_model": "llama3.1:latest",
+    "summarizer_model": "llama3.1:latest",
+    "answer_model": "llama3.1:latest",
+    "evaluator_model": "mistral:latest"
+  },
+  "generation_models_are_fully_distinct": false,
+  "generation_stages_share_models": true,
+  "shared_generation_model_groups": {
+    "llama3.1:latest": [
+      "research_model",
+      "summarizer_model",
+      "answer_model"
+    ]
+  },
+  "evaluator_separate_from_generation": true,
+  "independence_note": "Evaluator uses a different configured model from all generation stages. Research, summarizer, and answer stages share models where listed; separate model names alone do not establish complete evaluator independence."
+}
