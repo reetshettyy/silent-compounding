@@ -1,0 +1,113 @@
+{
+  "status": "technical_smoke_test_not_experimental_result",
+  "level": "document_title",
+  "top_k": 5,
+  "rows": [
+    {
+      "run_id": "HQ00_num",
+      "task_id": "HQ00",
+      "first_run_of_task": true,
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "sf_recall": 0.0
+    },
+    {
+      "run_id": "HQ01_num",
+      "task_id": "HQ01",
+      "first_run_of_task": true,
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "sf_recall": 0.0
+    },
+    {
+      "run_id": "HQ02",
+      "task_id": "HQ02",
+      "first_run_of_task": true,
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 1.0,
+      "sf_recall": 1.0
+    },
+    {
+      "run_id": "HQ05",
+      "task_id": "HQ05",
+      "first_run_of_task": true,
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "sf_recall": 0.5
+    },
+    {
+      "run_id": "HQ05_num",
+      "task_id": "HQ05",
+      "first_run_of_task": false,
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "sf_recall": 0.5
+    },
+    {
+      "run_id": "HQ06",
+      "task_id": "HQ06",
+      "first_run_of_task": true,
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 1.0,
+      "sf_recall": 1.0
+    },
+    {
+      "run_id": "HQ06_num",
+      "task_id": "HQ06",
+      "first_run_of_task": false,
+      "recall@1": 0.0,
+      "recall@3": 0.0,
+      "recall@5": 1.0,
+      "sf_recall": 1.0
+    },
+    {
+      "run_id": "HQ07",
+      "task_id": "HQ07",
+      "first_run_of_task": true,
+      "recall@1": 0.0,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "sf_recall": 0.5
+    },
+    {
+      "run_id": "HQ08",
+      "task_id": "HQ08",
+      "first_run_of_task": true,
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "sf_recall": 0.6666666666666666
+    },
+    {
+      "run_id": "HQ08_num",
+      "task_id": "HQ08",
+      "first_run_of_task": false,
+      "recall@1": 0.5,
+      "recall@3": 0.5,
+      "recall@5": 0.5,
+      "sf_recall": 0.6666666666666666
+    },
+    {
+      "run_id": "HQ09",
+      "task_id": "HQ09",
+      "first_run_of_task": true,
+      "recall@1": 0.5,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "sf_recall": 1.0
+    }
+  ],
+  "macro_over_distinct_tasks": {
+    "recall@1": 0.25,
+    "recall@3": 0.375,
+    "recall@5": 0.5625,
+    "sf_recall": 0.5833333333333334
+  },
+  "skipped": []
+}

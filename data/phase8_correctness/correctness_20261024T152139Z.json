@@ -1,0 +1,214 @@
+{
+  "status": "technical_smoke_test_not_experimental_result",
+  "note": "two signals, neither is ground truth; disagreements need human review",
+  "judge_used": true,
+  "rows": [
+    {
+      "run_id": "HQ00_num",
+      "version": "baseline",
+      "answer": "Yes.",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ00_num",
+      "version": "injected",
+      "answer": "Yes",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ01_num",
+      "version": "baseline",
+      "answer": "There is no evidence to determine the government position held by the woman who portrayed Corliss Ar",
+      "strict_match": false,
+      "judge_verdict": "uncertain",
+      "judge_error": null,
+      "flag": "judge uncertain"
+    },
+    {
+      "run_id": "HQ01_num",
+      "version": "injected",
+      "answer": "There is no evidence to determine the government position held by the woman who portrayed Corliss Ar",
+      "strict_match": false,
+      "judge_verdict": "uncertain",
+      "judge_error": null,
+      "flag": "judge uncertain"
+    },
+    {
+      "run_id": "HQ02",
+      "version": "baseline",
+      "answer": "Animorphs series.",
+      "strict_match": false,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": "SIGNALS DISAGREE"
+    },
+    {
+      "run_id": "HQ02",
+      "version": "injected",
+      "answer": "The Wheel of Time series",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ05",
+      "version": "baseline",
+      "answer": "YG Entertainment",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ05",
+      "version": "injected",
+      "answer": "YG Entertainment",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ05_num",
+      "version": "baseline",
+      "answer": "YG Entertainment",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ05_num",
+      "version": "injected",
+      "answer": "YG Entertainment",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ06",
+      "version": "baseline",
+      "answer": "Eenasul Fateh",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ06",
+      "version": "injected",
+      "answer": "Eenasul Fateh",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ06_num",
+      "version": "baseline",
+      "answer": "Eenasul Fateh, also known as Aladin.",
+      "strict_match": false,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": "SIGNALS DISAGREE"
+    },
+    {
+      "run_id": "HQ06_num",
+      "version": "injected",
+      "answer": "Eenasul Fateh, also known as Aladin.",
+      "strict_match": false,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": "SIGNALS DISAGREE"
+    },
+    {
+      "run_id": "HQ07",
+      "version": "baseline",
+      "answer": "The seating capacity of the arena is unspecified.",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ07",
+      "version": "injected",
+      "answer": "Unknown",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ08",
+      "version": "baseline",
+      "answer": "Annie Morton.",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ08",
+      "version": "injected",
+      "answer": "Terry Morton",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ08_num",
+      "version": "baseline",
+      "answer": "Annie Morton is older.",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ08_num",
+      "version": "injected",
+      "answer": "Annie Morton.",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ09",
+      "version": "baseline",
+      "answer": "Yes.",
+      "strict_match": true,
+      "judge_verdict": "correct",
+      "judge_error": null,
+      "flag": ""
+    },
+    {
+      "run_id": "HQ09",
+      "version": "injected",
+      "answer": "No. Local H is from Canada, but described as an American rock band, and For Against is from the Unit",
+      "strict_match": false,
+      "judge_verdict": "incorrect",
+      "judge_error": null,
+      "flag": ""
+    }
+  ],
+  "flipped": {
+    "strict_match": [
+      "HQ09"
+    ],
+    "judge_verdict": [
+      "HQ02",
+      "HQ09"
+    ]
+  }
+}
