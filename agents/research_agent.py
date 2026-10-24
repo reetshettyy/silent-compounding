@@ -1,4 +1,6 @@
 from typing import TypedDict
+from pathlib import Path
+import yaml
 
 from langchain_ollama import ChatOllama
 
@@ -17,7 +19,7 @@ class TaskRecord(TypedDict):
 
 
 llm = ChatOllama(
-    model="llama3.1",
+    model=yaml.safe_load(Path("config.yaml").read_text(encoding="utf-8"))["models"]["research_model"],
     temperature=0,
     max_tokens=300,
 )

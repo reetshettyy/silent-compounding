@@ -5,3 +5,10 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 .Rhistory
+
+# local backups
+*.bak
+*.save
+*.backup
+*.jupyter-backup
+*.pre_*
