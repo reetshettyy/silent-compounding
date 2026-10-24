@@ -1,0 +1,261 @@
+{
+  "status": "technical_smoke_test_not_experimental_result",
+  "note": "faithfulness to upstream only; rule signal is a heuristic",
+  "judge_used": true,
+  "judge_model": "mistral:latest",
+  "rows": [
+    {
+      "run_id": "HQ00_num",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately reflects the information provided in the source, stating that both Scott Derrickson and Ed Wood are American."
+      }
+    },
+    {
+      "run_id": "HQ00_num",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [
+        "Derrickson's",
+        "Wood's"
+      ],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "Both Scott Derrickson and Ed Wood are stated to be American in the source and summary."
+      }
+    },
+    {
+      "run_id": "HQ01_num",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "unfaithful",
+        "unsupported_claims": [
+          "The film 'A Kiss for Corliss' (1949) is a sequel to Kiss and Tell"
+        ],
+        "rationale": "The source text does not explicitly state that 'A Kiss for Corliss' is a sequel to 'Kiss and Tell'. It only mentions that 'A Kiss for Corliss' is a film starring Shirley Temple, which was her final starring role, and that it was released in 1949. However, the source text does not provide any information about the relationship between 'A Kiss for Corliss' and 'Kiss and Tell'."
+      }
+    },
+    {
+      "run_id": "HQ01_num",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately reflects the information in the source, stating that there is no evidence to determine the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, which aligns with the source's statement that the office of Secretary of State for Constitutional Affairs was created in 2003, after the film's context."
+      }
+    },
+    {
+      "run_id": "HQ02",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately reflects the information provided in the source, stating that the Animorphs series is a science fantasy young adult series told in first person, and that it has companion books narrating the stories of enslaved worlds and alien species, as well as being narrated through the perspectives of six main characters."
+      }
+    },
+    {
+      "run_id": "HQ02",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "unfaithful",
+        "unsupported_claims": [
+          "The Wheel of Time series is similar to the 'Animorphs' series"
+        ],
+        "rationale": "The source text does not mention any similarity between The Wheel of Time series and the Animorphs series."
+      }
+    },
+    {
+      "run_id": "HQ05",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately reflects the information provided in the source, stating that the debut album of a South Korean boy group is 2014 S/S and was released by YG Entertainment. The source also mentions that the group is called WINNER, but the summary does not make a claim about the group's name, only that it is a boy group."
+      }
+    },
+    {
+      "run_id": "HQ05",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "unfaithful",
+        "unsupported_claims": [
+          "The album is from the group WINNER"
+        ],
+        "rationale": "The source text states that the album was released by YG Entertainment, but does not explicitly state that it is from the group WINNER."
+      }
+    },
+    {
+      "run_id": "HQ05_num",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately represents the information provided in the source, stating the group's name (WINNER) and the release date and title of their debut album, which are all directly stated in the source."
+      }
+    },
+    {
+      "run_id": "HQ05_num",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "unfaithful",
+        "unsupported_claims": [
+          "The debut album of a South Korean boy group formed by YG Entertainment is actually 2014 S/S by WINNER"
+        ],
+        "rationale": "The source text only mentions the 2014 debut album of WINNER, not the 2012 debut album of any boy group formed by YG Entertainment."
+      }
+    },
+    {
+      "run_id": "HQ06",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "The summary accurately reflects the information provided in the source that Eenasul Fateh was a former international management consultant."
+      }
+    },
+    {
+      "run_id": "HQ06",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "The summary accurately reflects the information provided in the source text"
+      }
+    },
+    {
+      "run_id": "HQ06_num",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "The summary accurately states that Eenasul Fateh was a former international management consultant and helped organizations improve their performance, which is directly stated in the source."
+      }
+    },
+    {
+      "run_id": "HQ06_num",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "The summary accurately states that Eenasul Fateh was a former international management consultant, which is directly implied by the source."
+      }
+    },
+    {
+      "run_id": "HQ07",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately reflects the information in the source, stating that the seating capacity of the Androscoggin Bank Colisée is unspecified, which is consistent with the finding and evidence provided."
+      }
+    },
+    {
+      "run_id": "HQ07",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "unfaithful",
+        "unsupported_claims": [
+          "The Lewiston Maineiacs played their home games at the Central Maine Civic Center"
+        ],
+        "rationale": "The source text only mentions the Androscoggin Bank Colisée as the arena where the Lewiston Maineiacs played their home games, not the Central Maine Civic Center."
+      }
+    },
+    {
+      "run_id": "HQ08",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [
+        "Annie's",
+        "Terry's"
+      ],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "The summary accurately reflects the information provided in the source"
+      }
+    },
+    {
+      "run_id": "HQ08",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately reflects the finding and evidence provided in the source, stating that Terry Morton is older than Terry Richardson based on their birth years."
+      }
+    },
+    {
+      "run_id": "HQ08_num",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "The summary accurately reflects the information provided in the source"
+      }
+    },
+    {
+      "run_id": "HQ08_num",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "rationale": "The summary accurately reflects the finding and evidence provided in the source"
+      }
+    },
+    {
+      "run_id": "HQ09",
+      "version": "baseline",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "faithful",
+        "unsupported_claims": [],
+        "rationale": "The summary accurately reflects the information provided in the source, stating the nationality and genre of both bands, as well as their locations."
+      }
+    },
+    {
+      "run_id": "HQ09",
+      "version": "injected",
+      "novel_numbers": [],
+      "novel_terms": [],
+      "judge": {
+        "verdict": "unfaithful",
+        "unsupported_claims": [
+          "Local H is from Canada"
+        ],
+        "rationale": "The source text states that Local H is an American rock band formed in Zion, Illinois, but does not state that they are from Canada."
+      }
+    }
+  ],
+  "skipped": []
+}

@@ -17,11 +17,16 @@ STOP = {"the", "this", "that", "these", "those", "it", "its", "in", "on", "at", 
 VERDICTS = {"faithful", "unfaithful", "uncertain"}
 
 
+def text_of(entry):
+    o = entry.get("output")
+    if isinstance(o, dict):
+        o = o.get("output")
+    return o if isinstance(o, str) else None
+
+
 def parts(trace_list):
-    up = next((e["output"] for e in reversed(trace_list)
-               if e.get("agent") == "research" and isinstance(e.get("output"), str)), None)
-    sm = next((e["output"] for e in reversed(trace_list)
-               if e.get("agent") == "summarizer" and isinstance(e.get("output"), str)), None)
+    up = next((text_of(e) for e in reversed(trace_list) if e.get("agent") == "research" and text_of(e)), None)
+    sm = next((text_of(e) for e in reversed(trace_list) if e.get("agent") == "summarizer" and text_of(e)), None)
     return up, sm
 
 
