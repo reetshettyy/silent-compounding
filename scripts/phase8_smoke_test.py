@@ -35,6 +35,11 @@ def main():
     args = ap.parse_args()
 
     tasks = {t["task_id"]: t for t in json.loads((ROOT / "tasks/hotpotqa_sample.json").read_text(encoding="utf-8"))}
+    adj_path = ROOT / "data" / "answer_adjudication_v1.json"
+    ADJ = {}
+    if adj_path.exists():
+        ADJ = {k: v for k, v in json.loads(adj_path.read_text(encoding="utf-8"))["overrides"].items()
+               if v.get("confirmed_by_researcher") is True}
     groups = {}
     for path in args.predictions:
         for line in Path(path).read_text(encoding="utf-8").splitlines():
@@ -58,6 +63,11 @@ def main():
         gold = tasks[first["task_id"]]["gold_answer"]
         base_ok = answers_match(rec["baseline"].get("extracted_answer", ""), gold)
         inj_ok = answers_match(rec["injected"].get("extracted_answer", ""), gold)
+        ov = ADJ.get(run_id, {})
+        if "baseline_matches_gold" in ov:
+            base_ok = ov["baseline_matches_gold"]
+        if "injected_matches_gold" in ov:
+            inj_ok = ov["injected_matches_gold"]
         wrong_due = base_ok and not inj_ok
         outcomes, sev = {}, {}
         for stage, row in st.items():
@@ -98,10 +108,10 @@ def main():
     out.write_text(json.dumps({
         "status": "technical_smoke_test_not_experimental_result",
         "labels": "automated (rule_based_injection_point + independent_judge)",
-        "runs": runs, "esr": esr, "ecr": ecr, "fepr": fepr, "acceptance": acc,
+        "adjudication_overrides_applied": sorted(ADJ), "runs": runs, "esr": esr, "ecr": ecr, "fepr": fepr, "acceptance": acc,
         "point_of_correction": poc, "mean_amplification_factor": af,
         "limitations": ["Severity 3 not produced automatically.",
-                        "Severity 4 uses strict exact normalized match against gold (baseline matches, injected does not); wording differences can cause false flags, so review manually.",
+                        "Severity 4 uses strict exact normalized match against gold (baseline matches, injected does not); wording differences can cause false flags, so review manually. Researcher-confirmed overrides from data/answer_adjudication_v1.json are applied.",
                         "Only research-stage injection in this sample."],
     }, indent=2), encoding="utf-8")
     print("Saved:", out)

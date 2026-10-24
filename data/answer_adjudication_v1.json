@@ -1,0 +1,17 @@
+{
+  "status": "HQ02 and HQ06_num confirmed by researcher",
+  "rule": "Overrides the strict normalized matcher only where the answer is the same entity with extra wording. Gold is used after generation only.",
+  "overrides": {
+    "HQ02": {
+      "baseline_matches_gold": true,
+      "note": "'Animorphs series.' vs gold 'Animorphs': same entity plus the word 'series'.",
+      "confirmed_by_researcher": true
+    },
+    "HQ06_num": {
+      "baseline_matches_gold": true,
+      "injected_matches_gold": true,
+      "note": "'Eenasul Fateh, also known as Aladin.' vs gold 'Eenasul Fateh': same entity plus an alias.",
+      "confirmed_by_researcher": true
+    }
+  }
+}

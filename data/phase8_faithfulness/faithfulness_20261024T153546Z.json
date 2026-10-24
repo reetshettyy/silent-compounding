@@ -1,0 +1,31 @@
+{
+  "status": "technical_smoke_test_not_experimental_result",
+  "note": "faithfulness to upstream only; rule signal is a heuristic",
+  "judge_used": true,
+  "judge_model": "mistral:latest",
+  "rows": [],
+  "skipped": [
+    "HQ00_num baseline: missing research or summary text",
+    "HQ00_num injected: missing research or summary text",
+    "HQ01_num baseline: missing research or summary text",
+    "HQ01_num injected: missing research or summary text",
+    "HQ02 baseline: missing research or summary text",
+    "HQ02 injected: missing research or summary text",
+    "HQ05 baseline: missing research or summary text",
+    "HQ05 injected: missing research or summary text",
+    "HQ05_num baseline: missing research or summary text",
+    "HQ05_num injected: missing research or summary text",
+    "HQ06 baseline: missing research or summary text",
+    "HQ06 injected: missing research or summary text",
+    "HQ06_num baseline: missing research or summary text",
+    "HQ06_num injected: missing research or summary text",
+    "HQ07 baseline: missing research or summary text",
+    "HQ07 injected: missing research or summary text",
+    "HQ08 baseline: missing research or summary text",
+    "HQ08 injected: missing research or summary text",
+    "HQ08_num baseline: missing research or summary text",
+    "HQ08_num injected: missing research or summary text",
+    "HQ09 baseline: missing research or summary text",
+    "HQ09 injected: missing research or summary text"
+  ]
+}
