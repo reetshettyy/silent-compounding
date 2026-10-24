@@ -1,0 +1,149 @@
+{
+  "task_id": "HQ07",
+  "injection_stage": "research",
+  "error_type": "factual",
+  "claims": {
+    "original": "The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Androscoggin Bank Colisée.",
+    "injected": "The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Central Maine Civic Center."
+  },
+  "stage_judgments": {
+    "research": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The injected claim incorrectly states that the arena where the Lewiston Maineiacs played their home games is the Central Maine Civic Center, which contradicts the original claim that it is the Androscoggin Bank Colisée. The output also fails to correct this error and instead repeats it.",
+      "stage": "research",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "summary": {
+      "outcome": "uncertain",
+      "severity": 0.5,
+      "rationale": "The output correctly identifies the arena where the Lewiston Maineiacs played their home games as the Androscoggin Bank Colisée, but it does not explicitly correct or amplify the injected error about the Central Maine Civic Center. The output also fails to provide a specific seating capacity for either arena.",
+      "stage": "summary",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "final": {
+      "outcome": "uncertain",
+      "severity": 0.5,
+      "rationale": "The output does not provide any information to support or refute the original or injected claims. It simply states 'Unknown', which could apply to either arena.",
+      "stage": "final",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    }
+  },
+  "deterministic_claim_match": {
+    "research": {
+      "status": "error_retained",
+      "method": "normalized_exact_text",
+      "interpretation": "injected claim found exactly after normalization"
+    },
+    "summary": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    },
+    "final": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    }
+  },
+  "reference_metrics": null,
+  "cascade_analysis": {
+    "overall_outcome": "uncertain",
+    "overall_rationale": "At least one stage has uncertain or unmeasurable error evidence.",
+    "stage_results": {
+      "research": {
+        "claim_status": "error_retained",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The injected claim incorrectly states that the arena where the Lewiston Maineiacs played their home games is the Central Maine Civic Center, which contradicts the original claim that it is the Androscoggin Bank Colisée. The output also fails to correct this error and instead repeats it."
+      },
+      "summary": {
+        "claim_status": "neither_detected",
+        "error_outcome": "uncertain",
+        "severity": 0.5,
+        "rationale": "The output correctly identifies the arena where the Lewiston Maineiacs played their home games as the Androscoggin Bank Colisée, but it does not explicitly correct or amplify the injected error about the Central Maine Civic Center. The output also fails to provide a specific seating capacity for either arena."
+      },
+      "final": {
+        "claim_status": "neither_detected",
+        "error_outcome": "uncertain",
+        "severity": 0.5,
+        "rationale": "The output does not provide any information to support or refute the original or injected claims. It simply states 'Unknown', which could apply to either arena."
+      }
+    },
+    "transitions": [
+      {
+        "from_stage": "research",
+        "to_stage": "summary",
+        "claim_status_before": "error_retained",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "uncertain",
+        "error_persistence": false,
+        "outcome_changed": true
+      },
+      {
+        "from_stage": "summary",
+        "to_stage": "final",
+        "claim_status_before": "neither_detected",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "uncertain",
+        "error_outcome_after": "uncertain",
+        "error_persistence": false,
+        "outcome_changed": false
+      }
+    ],
+    "amplification_evidence": null,
+    "amplification_evidence_accepted": false,
+    "evaluation_method": "error_outcome_comparison_without_answer_correctness_inference",
+    "limitations": [
+      "Claim-presence checks use exact normalized text.",
+      "Stage outcomes are independent LLM-judge judgments and require validation.",
+      "Error correction does not imply factual answer correctness.",
+      "Amplification requires comparative evidence and separate validation."
+    ]
+  },
+  "evaluation_method": "independent_error_judge_plus_stage_comparison",
+  "gold_answer_used_by_error_judge": false,
+  "answer_correctness_evaluated": false,
+  "trace_path": "data/phase7_validation/validation_20261023T150920950492Z/HQ07.json",
+  "final_answer_reference_metrics": {
+    "baseline": {
+      "bleu4": 0.0,
+      "meteor": 0.1851851851851852,
+      "rouge_l": {
+        "precision": 0.125,
+        "recall": 0.3333333333333333,
+        "fmeasure": 0.18181818181818182
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.8878285884857178,
+        "recall": 0.8637041449546814,
+        "f1": 0.8756001591682434
+      },
+      "evaluated_text": "The seating capacity of the arena is unspecified."
+    },
+    "injected": {
+      "bleu4": 0.0,
+      "meteor": 0.0,
+      "rouge_l": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "fmeasure": 0.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.8807602524757385,
+        "recall": 0.8404651880264282,
+        "f1": 0.8601410388946533
+      },
+      "evaluated_text": "Unknown"
+    }
+  }
+}

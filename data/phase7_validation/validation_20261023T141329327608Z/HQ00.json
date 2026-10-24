@@ -1,0 +1,158 @@
+{
+  "task_id": "HQ00",
+  "error_type": "factual",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "Were Scott Derrickson and Ed Wood of the same nationality?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ00_DOC02",
+            "HQ00_DOC08",
+            "HQ00_DOC00",
+            "HQ00_DOC07",
+            "HQ00_DOC09"
+          ],
+          "retrieved_titles": [
+            "Woodson, Arkansas",
+            "Conrad Brooks",
+            "Ed Wood (film)",
+            "Sinister (film)",
+            "Doctor Strange (2016 film)"
+          ],
+          "retrieval_scores": [
+            16.142595689770204,
+            12.24594163311165,
+            12.211483300217022,
+            12.191942803072545,
+            11.774602086371642
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0001425830414518714
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: Scott Derrickson and Ed Wood were of different nationalities.\n\nEVIDENCE: Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American. Ed Wood is also American, as stated in the context of the film \"Ed Wood\" (1994), which is also American."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: Scott Derrickson and Ed Wood are both American, as evidenced by Scott's work on the American film \"Doctor Strange\" and Ed's American nationality stated in the context of the film \"Ed Wood\"."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: Yes"
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: Yes",
+    "extracted_answer": "Yes"
+  },
+  "injected": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "Were Scott Derrickson and Ed Wood of the same nationality?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ00_DOC02",
+            "HQ00_DOC08",
+            "HQ00_DOC00",
+            "HQ00_DOC07",
+            "HQ00_DOC09"
+          ],
+          "retrieved_titles": [
+            "Woodson, Arkansas",
+            "Conrad Brooks",
+            "Ed Wood (film)",
+            "Sinister (film)",
+            "Doctor Strange (2016 film)"
+          ],
+          "retrieval_scores": [
+            16.142595689770204,
+            12.24594163311165,
+            12.211483300217022,
+            12.191942803072545,
+            11.774602086371642
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.000924208085052669
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: James Cameron and Ed Wood were of different nationalities.\n\nEVIDENCE: Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American. Ed Wood is also American, as stated in the context of the film \"Ed Wood\" (1994), which is also American."
+        }
+      },
+      {
+        "agent": "error_injector",
+        "output": {
+          "error_type": "factual",
+          "injection_stage": "research",
+          "wording": "neutral",
+          "original_output": "FINDING: Scott Derrickson and Ed Wood were of different nationalities.\n\nEVIDENCE: Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American. Ed Wood is also American, as stated in the context of the film \"Ed Wood\" (1994), which is also American.",
+          "original_claim": "Scott Derrickson and Ed Wood were of different nationalities.",
+          "injected_claim": "James Cameron and Ed Wood were of different nationalities.",
+          "injection_description": "Replaced the director's name with a plausible but incorrect one",
+          "corrupted_output": "FINDING: James Cameron and Ed Wood were of different nationalities.\n\nEVIDENCE: Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American. Ed Wood is also American, as stated in the context of the film \"Ed Wood\" (1994), which is also American."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: James Cameron and Ed Wood were of different nationalities, with James Cameron being of unknown nationality (not mentioned in the research output) and Ed Wood being American, as stated in the context of the 1994 film \"Ed Wood\"."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: No, Scott Derrickson is not mentioned in the summary, but James Cameron is of unknown nationality, and Ed Wood is American."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: No, Scott Derrickson is not mentioned in the summary, but James Cameron is of unknown nationality, and Ed Wood is American.",
+    "extracted_answer": "No, Scott Derrickson is not mentioned in the summary, but James Cameron is of unknown nationality, and Ed Wood is American."
+  },
+  "injection_metadata": {
+    "error_type": "factual",
+    "injection_stage": "research",
+    "wording": "neutral",
+    "original_output": "FINDING: Scott Derrickson and Ed Wood were of different nationalities.\n\nEVIDENCE: Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American. Ed Wood is also American, as stated in the context of the film \"Ed Wood\" (1994), which is also American.",
+    "original_claim": "Scott Derrickson and Ed Wood were of different nationalities.",
+    "injected_claim": "James Cameron and Ed Wood were of different nationalities.",
+    "injection_description": "Replaced the director's name with a plausible but incorrect one",
+    "corrupted_output": "FINDING: James Cameron and Ed Wood were of different nationalities.\n\nEVIDENCE: Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American. Ed Wood is also American, as stated in the context of the film \"Ed Wood\" (1994), which is also American."
+  },
+  "final_answer_comparison": {
+    "baseline_exact_match": true,
+    "injected_exact_match": false,
+    "gold_answer_used_after_generation": true
+  },
+  "errors": [],
+  "human_review_required": true
+}

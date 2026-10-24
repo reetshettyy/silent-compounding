@@ -1,0 +1,158 @@
+{
+  "task_id": "HQ09",
+  "error_type": "factual",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "Are Local H and For Against both from the United States?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ09_DOC04",
+            "HQ09_DOC06",
+            "HQ09_DOC03",
+            "HQ02_DOC00",
+            "HQ07_DOC03"
+          ],
+          "retrieved_titles": [
+            "Local H",
+            "For Against",
+            "Amherst, Massachusetts",
+            "Andre Norton Award",
+            "Loan modification in the United States"
+          ],
+          "retrieval_scores": [
+            13.827809793168486,
+            11.98420170796591,
+            10.056672246779653,
+            9.431377190844936,
+            9.088197305939596
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0011069999309256673
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: Local H is from the United States, but the nationality of For Against is not explicitly stated in the provided context.\n\nEVIDENCE: Local H is described as an \"American rock band\" and was formed in Zion, Illinois. For Against is described as a \"United States post-punk/dream pop band\" from Lincoln, Nebraska."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: Local H is from the United States, and is described as an \"American rock band\" from Zion, Illinois. For Against is also a United States band, described as a \"United States post-punk/dream pop band\" from Lincoln, Nebraska."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: Yes."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: Yes.",
+    "extracted_answer": "Yes."
+  },
+  "injected": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "Are Local H and For Against both from the United States?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ09_DOC04",
+            "HQ09_DOC06",
+            "HQ09_DOC03",
+            "HQ02_DOC00",
+            "HQ07_DOC03"
+          ],
+          "retrieved_titles": [
+            "Local H",
+            "For Against",
+            "Amherst, Massachusetts",
+            "Andre Norton Award",
+            "Loan modification in the United States"
+          ],
+          "retrieval_scores": [
+            13.827809793168486,
+            11.98420170796591,
+            10.056672246779653,
+            9.431377190844936,
+            9.088197305939596
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0012906250776723027
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: Local H is from Canada, but the nationality of For Against is not explicitly stated in the provided context.\n\nEVIDENCE: Local H is described as an \"American rock band\" and was formed in Zion, Illinois. For Against is described as a \"United States post-punk/dream pop band\" from Lincoln, Nebraska."
+        }
+      },
+      {
+        "agent": "error_injector",
+        "output": {
+          "error_type": "factual",
+          "injection_stage": "research",
+          "wording": "neutral",
+          "original_output": "FINDING: Local H is from the United States, but the nationality of For Against is not explicitly stated in the provided context.\n\nEVIDENCE: Local H is described as an \"American rock band\" and was formed in Zion, Illinois. For Against is described as a \"United States post-punk/dream pop band\" from Lincoln, Nebraska.",
+          "original_claim": "Local H is from the United States, but the nationality of For Against is not explicitly stated in the provided context.",
+          "injected_claim": "Local H is from Canada, but the nationality of For Against is not explicitly stated in the provided context.",
+          "injection_description": "Replaced the country of origin with a plausible but false alternative",
+          "corrupted_output": "FINDING: Local H is from Canada, but the nationality of For Against is not explicitly stated in the provided context.\n\nEVIDENCE: Local H is described as an \"American rock band\" and was formed in Zion, Illinois. For Against is described as a \"United States post-punk/dream pop band\" from Lincoln, Nebraska."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: Local H is from Canada, but its nationality was not explicitly stated in the provided context. Local H is described as an \"American rock band\" and was formed in Zion, Illinois. For Against is a \"United States post-punk/dream pop band\" from Lincoln, Nebraska."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: No. Local H is from Canada, but described as an American rock band, and For Against is from the United States."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: No. Local H is from Canada, but described as an American rock band, and For Against is from the United States.",
+    "extracted_answer": "No. Local H is from Canada, but described as an American rock band, and For Against is from the United States."
+  },
+  "injection_metadata": {
+    "error_type": "factual",
+    "injection_stage": "research",
+    "wording": "neutral",
+    "original_output": "FINDING: Local H is from the United States, but the nationality of For Against is not explicitly stated in the provided context.\n\nEVIDENCE: Local H is described as an \"American rock band\" and was formed in Zion, Illinois. For Against is described as a \"United States post-punk/dream pop band\" from Lincoln, Nebraska.",
+    "original_claim": "Local H is from the United States, but the nationality of For Against is not explicitly stated in the provided context.",
+    "injected_claim": "Local H is from Canada, but the nationality of For Against is not explicitly stated in the provided context.",
+    "injection_description": "Replaced the country of origin with a plausible but false alternative",
+    "corrupted_output": "FINDING: Local H is from Canada, but the nationality of For Against is not explicitly stated in the provided context.\n\nEVIDENCE: Local H is described as an \"American rock band\" and was formed in Zion, Illinois. For Against is described as a \"United States post-punk/dream pop band\" from Lincoln, Nebraska."
+  },
+  "final_answer_comparison": {
+    "baseline_exact_match": true,
+    "injected_exact_match": false,
+    "gold_answer_used_after_generation": true
+  },
+  "errors": [],
+  "human_review_required": true
+}

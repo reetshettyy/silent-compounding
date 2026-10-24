@@ -1,0 +1,149 @@
+{
+  "task_id": "HQ09",
+  "injection_stage": "research",
+  "error_type": "factual",
+  "claims": {
+    "original": "Local H is from the United States, but the nationality of For Against is not explicitly stated in the provided context.",
+    "injected": "Local H is from Canada, but the nationality of For Against is not explicitly stated in the provided context."
+  },
+  "stage_judgments": {
+    "research": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The stage output repeats and strengthens the injected error by asserting that Local H is from Canada, which contradicts the provided evidence that Local H is an American rock band.",
+      "stage": "research",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "summary": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The output incorrectly states that Local H is from Canada, which contradicts the original claim that Local H is from the United States. Additionally, the output strengthens the error by asserting that Local H is an 'American rock band', which is inconsistent with the injected claim that Local H is from Canada.",
+      "stage": "summary",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "final": {
+      "outcome": "corrected",
+      "severity": 0.0,
+      "rationale": "The output rejects the injected claim by stating that Local H is from Canada, which contradicts the injected claim that Local H is from Canada. Additionally, the output correctly identifies For Against as being from the United States, which supports the original claim.",
+      "stage": "final",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    }
+  },
+  "deterministic_claim_match": {
+    "research": {
+      "status": "error_retained",
+      "method": "normalized_exact_text",
+      "interpretation": "injected claim found exactly after normalization"
+    },
+    "summary": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    },
+    "final": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    }
+  },
+  "reference_metrics": null,
+  "cascade_analysis": {
+    "overall_outcome": "corrected",
+    "overall_rationale": "The error judge classified the final-stage injected error as corrected. This does not establish that the final answer is factually correct.",
+    "stage_results": {
+      "research": {
+        "claim_status": "error_retained",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The stage output repeats and strengthens the injected error by asserting that Local H is from Canada, which contradicts the provided evidence that Local H is an American rock band."
+      },
+      "summary": {
+        "claim_status": "neither_detected",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The output incorrectly states that Local H is from Canada, which contradicts the original claim that Local H is from the United States. Additionally, the output strengthens the error by asserting that Local H is an 'American rock band', which is inconsistent with the injected claim that Local H is from Canada."
+      },
+      "final": {
+        "claim_status": "neither_detected",
+        "error_outcome": "corrected",
+        "severity": 0.0,
+        "rationale": "The output rejects the injected claim by stating that Local H is from Canada, which contradicts the injected claim that Local H is from Canada. Additionally, the output correctly identifies For Against as being from the United States, which supports the original claim."
+      }
+    },
+    "transitions": [
+      {
+        "from_stage": "research",
+        "to_stage": "summary",
+        "claim_status_before": "error_retained",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "amplified",
+        "error_persistence": false,
+        "outcome_changed": false
+      },
+      {
+        "from_stage": "summary",
+        "to_stage": "final",
+        "claim_status_before": "neither_detected",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "corrected",
+        "error_persistence": false,
+        "outcome_changed": true
+      }
+    ],
+    "amplification_evidence": null,
+    "amplification_evidence_accepted": false,
+    "evaluation_method": "error_outcome_comparison_without_answer_correctness_inference",
+    "limitations": [
+      "Claim-presence checks use exact normalized text.",
+      "Stage outcomes are independent LLM-judge judgments and require validation.",
+      "Error correction does not imply factual answer correctness.",
+      "Amplification requires comparative evidence and separate validation."
+    ]
+  },
+  "evaluation_method": "independent_error_judge_plus_stage_comparison",
+  "gold_answer_used_by_error_judge": false,
+  "answer_correctness_evaluated": false,
+  "trace_path": "data/phase7_validation/validation_20261023T150920950492Z/HQ09.json",
+  "final_answer_reference_metrics": {
+    "baseline": {
+      "bleu4": 0.0,
+      "meteor": 0.45454545454545453,
+      "rouge_l": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fmeasure": 1.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.9644323587417603,
+        "recall": 0.9289253354072571,
+        "f1": 0.946345865726471
+      },
+      "evaluated_text": "Yes."
+    },
+    "injected": {
+      "bleu4": 0.0,
+      "meteor": 0.0,
+      "rouge_l": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "fmeasure": 0.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.8007416725158691,
+        "recall": 0.8445959091186523,
+        "f1": 0.822084367275238
+      },
+      "evaluated_text": "No. Local H is from Canada, but described as an American rock band, and For Against is from the United States."
+    }
+  }
+}

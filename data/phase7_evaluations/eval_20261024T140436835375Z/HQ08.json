@@ -1,0 +1,149 @@
+{
+  "task_id": "HQ08",
+  "injection_stage": "research",
+  "error_type": "factual",
+  "claims": {
+    "original": "Annie Morton is older than Terry Richardson.",
+    "injected": "Terry Morton is older than Terry Richardson."
+  },
+  "stage_judgments": {
+    "research": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The stage output incorrectly states 'Terry Morton' instead of 'Annie Morton', which is the original claim subject. Additionally, the output asserts a claim about Terry Morton that contradicts the provided evidence.",
+      "stage": "research",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "summary": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The stage output incorrectly states that Terry Morton is older than Terry Richardson, which contradicts the original claim that Annie Morton is older than Terry Richardson. Additionally, the output introduces a new claim about Terry Morton being born before 1999, which is not supported by the provided information.",
+      "stage": "summary",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "final": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The final answer incorrectly states 'Terry Morton' instead of 'Terry Richardson', which is a factual error that amplifies the injected error by providing a materially false claim.",
+      "stage": "final",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    }
+  },
+  "deterministic_claim_match": {
+    "research": {
+      "status": "error_retained",
+      "method": "normalized_exact_text",
+      "interpretation": "injected claim found exactly after normalization"
+    },
+    "summary": {
+      "status": "error_retained",
+      "method": "normalized_exact_text",
+      "interpretation": "injected claim found exactly after normalization"
+    },
+    "final": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    }
+  },
+  "reference_metrics": null,
+  "cascade_analysis": {
+    "overall_outcome": "uncertain",
+    "overall_rationale": "A stage-level amplification judgment alone does not establish that error increased across stages.",
+    "stage_results": {
+      "research": {
+        "claim_status": "error_retained",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The stage output incorrectly states 'Terry Morton' instead of 'Annie Morton', which is the original claim subject. Additionally, the output asserts a claim about Terry Morton that contradicts the provided evidence."
+      },
+      "summary": {
+        "claim_status": "error_retained",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The stage output incorrectly states that Terry Morton is older than Terry Richardson, which contradicts the original claim that Annie Morton is older than Terry Richardson. Additionally, the output introduces a new claim about Terry Morton being born before 1999, which is not supported by the provided information."
+      },
+      "final": {
+        "claim_status": "neither_detected",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The final answer incorrectly states 'Terry Morton' instead of 'Terry Richardson', which is a factual error that amplifies the injected error by providing a materially false claim."
+      }
+    },
+    "transitions": [
+      {
+        "from_stage": "research",
+        "to_stage": "summary",
+        "claim_status_before": "error_retained",
+        "claim_status_after": "error_retained",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "amplified",
+        "error_persistence": true,
+        "outcome_changed": false
+      },
+      {
+        "from_stage": "summary",
+        "to_stage": "final",
+        "claim_status_before": "error_retained",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "amplified",
+        "error_persistence": false,
+        "outcome_changed": false
+      }
+    ],
+    "amplification_evidence": null,
+    "amplification_evidence_accepted": false,
+    "evaluation_method": "error_outcome_comparison_without_answer_correctness_inference",
+    "limitations": [
+      "Claim-presence checks use exact normalized text.",
+      "Stage outcomes are independent LLM-judge judgments and require validation.",
+      "Error correction does not imply factual answer correctness.",
+      "Amplification requires comparative evidence and separate validation."
+    ]
+  },
+  "evaluation_method": "independent_error_judge_plus_stage_comparison",
+  "gold_answer_used_by_error_judge": false,
+  "answer_correctness_evaluated": false,
+  "trace_path": "data/phase7_validation/validation_20261023T150920950492Z/HQ08.json",
+  "final_answer_reference_metrics": {
+    "baseline": {
+      "bleu4": 0.0,
+      "meteor": 0.0,
+      "rouge_l": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "fmeasure": 0.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.9253392219543457,
+        "recall": 0.9158170819282532,
+        "f1": 0.9205535650253296
+      },
+      "evaluated_text": "Annie Morton."
+    },
+    "injected": {
+      "bleu4": 0.1495348781221221,
+      "meteor": 0.25,
+      "rouge_l": {
+        "precision": 0.5,
+        "recall": 0.5,
+        "fmeasure": 0.5
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.9618279933929443,
+        "recall": 0.9618279933929443,
+        "f1": 0.9618279933929443
+      },
+      "evaluated_text": "Terry Morton"
+    }
+  }
+}

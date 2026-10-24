@@ -1,0 +1,158 @@
+{
+  "task_id": "HQ07",
+  "error_type": "factual",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "The arena where the Lewiston Maineiacs played their home games can seat how many people?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ07_DOC08",
+            "HQ07_DOC00",
+            "HQ07_DOC07",
+            "HQ07_DOC09",
+            "HQ07_DOC04"
+          ],
+          "retrieved_titles": [
+            "Dwyer Arena",
+            "Billings Bulls",
+            "Lewiston Maineiacs",
+            "2006–07 QMJHL season",
+            "Case Gym"
+          ],
+          "retrieval_scores": [
+            23.624999219589334,
+            21.37516551468321,
+            20.87135442902896,
+            19.80768897627539,
+            17.176201046118052
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.000924500054679811
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Androscoggin Bank Colisée.\n\nEVIDENCE: The context mentions that the Lewiston Maineiacs played their home games at the Androscoggin Bank Colisée, but it does not provide information about the seating capacity of this arena."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The Androscoggin Bank Colisée, where the Lewiston Maineiacs played their home games, has an unspecified seating capacity, as no specific number is provided in the context."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: The seating capacity of the arena is unspecified."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: The seating capacity of the arena is unspecified.",
+    "extracted_answer": "The seating capacity of the arena is unspecified."
+  },
+  "injected": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "The arena where the Lewiston Maineiacs played their home games can seat how many people?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ07_DOC08",
+            "HQ07_DOC00",
+            "HQ07_DOC07",
+            "HQ07_DOC09",
+            "HQ07_DOC04"
+          ],
+          "retrieved_titles": [
+            "Dwyer Arena",
+            "Billings Bulls",
+            "Lewiston Maineiacs",
+            "2006–07 QMJHL season",
+            "Case Gym"
+          ],
+          "retrieval_scores": [
+            23.624999219589334,
+            21.37516551468321,
+            20.87135442902896,
+            19.80768897627539,
+            17.176201046118052
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0009958329610526562
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Central Maine Civic Center.\n\nEVIDENCE: The context mentions that the Lewiston Maineiacs played their home games at the Androscoggin Bank Colisée, but it does not provide information about the seating capacity of this arena."
+        }
+      },
+      {
+        "agent": "error_injector",
+        "output": {
+          "error_type": "factual",
+          "injection_stage": "research",
+          "wording": "neutral",
+          "original_output": "FINDING: The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Androscoggin Bank Colisée.\n\nEVIDENCE: The context mentions that the Lewiston Maineiacs played their home games at the Androscoggin Bank Colisée, but it does not provide information about the seating capacity of this arena.",
+          "original_claim": "The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Androscoggin Bank Colisée.",
+          "injected_claim": "The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Central Maine Civic Center.",
+          "injection_description": "The name of the arena where the Lewiston Maineiacs played their home games was changed to a different but plausible name.",
+          "corrupted_output": "FINDING: The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Central Maine Civic Center.\n\nEVIDENCE: The context mentions that the Lewiston Maineiacs played their home games at the Androscoggin Bank Colisée, but it does not provide information about the seating capacity of this arena."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The seating capacity of the Central Maine Civic Center, where the Lewiston Maineiacs played their home games, is unknown. The Lewiston Maineiacs actually played at the Androscoggin Bank Colisée, but the seating capacity of that arena is also not specified."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: Unknown"
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: Unknown",
+    "extracted_answer": "Unknown"
+  },
+  "injection_metadata": {
+    "error_type": "factual",
+    "injection_stage": "research",
+    "wording": "neutral",
+    "original_output": "FINDING: The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Androscoggin Bank Colisée.\n\nEVIDENCE: The context mentions that the Lewiston Maineiacs played their home games at the Androscoggin Bank Colisée, but it does not provide information about the seating capacity of this arena.",
+    "original_claim": "The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Androscoggin Bank Colisée.",
+    "injected_claim": "The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Central Maine Civic Center.",
+    "injection_description": "The name of the arena where the Lewiston Maineiacs played their home games was changed to a different but plausible name.",
+    "corrupted_output": "FINDING: The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Central Maine Civic Center.\n\nEVIDENCE: The context mentions that the Lewiston Maineiacs played their home games at the Androscoggin Bank Colisée, but it does not provide information about the seating capacity of this arena."
+  },
+  "final_answer_comparison": {
+    "baseline_exact_match": false,
+    "injected_exact_match": false,
+    "gold_answer_used_after_generation": true
+  },
+  "errors": [],
+  "human_review_required": true
+}

@@ -13,6 +13,7 @@ sys.path.insert(
     ),
 )
 
+from analysis.answer_eval import answers_match, normalize_answer
 from agents.research_agent import research_node
 from injection.error_bank import (
     _extract_candidate_claims,
@@ -119,60 +120,6 @@ def extract_final_answer(final_output):
         ]
 
     return answer_text.strip()
-
-
-def normalize_answer(answer):
-    """
-    Deterministic normalization for clean-baseline comparison.
-
-    The rule is:
-    1. Lowercase.
-    2. Collapse whitespace.
-    3. Remove surrounding/trailing punctuation.
-    4. Remove a leading 'the' article.
-    5. Compare exact normalized strings OR accept clear
-       containment in either direction, so harmless elaboration
-       is accepted.
-    """
-
-    if not isinstance(answer, str):
-        return ""
-
-    normalized = answer.strip().lower()
-    normalized = re.sub(r"\s+", " ", normalized)
-
-    normalized = normalized.strip(
-        " \t\r\n.,;:!?\"'“”‘’()[]{}"
-    )
-
-    normalized = re.sub(
-        r"^the\s+",
-        "",
-        normalized,
-    )
-
-    normalized = normalized.strip(
-        " \t\r\n.,;:!?\"'“”‘’()[]{}"
-    )
-
-    return normalized
-
-
-def answers_match(extracted_answer, gold_answer):
-    normalized_extracted = normalize_answer(
-        extracted_answer
-    )
-    normalized_gold = normalize_answer(
-        gold_answer
-    )
-
-    if not normalized_extracted or not normalized_gold:
-        return False
-
-    if normalized_extracted == normalized_gold:
-        return True
-
-    return normalized_gold in normalized_extracted
 
 
 def get_clean_baseline(task):

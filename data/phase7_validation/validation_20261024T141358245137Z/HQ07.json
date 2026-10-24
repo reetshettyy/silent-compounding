@@ -1,0 +1,78 @@
+{
+  "task_id": "HQ07",
+  "error_type": "numerical",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "The arena where the Lewiston Maineiacs played their home games can seat how many people?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ07_DOC08",
+            "HQ07_DOC00",
+            "HQ07_DOC07",
+            "HQ07_DOC09",
+            "HQ07_DOC04"
+          ],
+          "retrieved_titles": [
+            "Dwyer Arena",
+            "Billings Bulls",
+            "Lewiston Maineiacs",
+            "2006–07 QMJHL season",
+            "Case Gym"
+          ],
+          "retrieval_scores": [
+            23.624999219589334,
+            21.37516551468321,
+            20.87135442902896,
+            19.80768897627539,
+            17.176201046118052
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0008885000133886933
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: The arena where the Lewiston Maineiacs played their home games can seat an unspecified number of people, but the context does not provide a specific capacity for the Androscoggin Bank Colisée.\n\nEVIDENCE: The context mentions that the Lewiston Maineiacs played their home games at the Androscoggin Bank Colisée, but it does not provide information about the seating capacity of this arena."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The seating capacity of the Androscoggin Bank Colisée, where the Lewiston Maineiacs played their home games, is unspecified. The context does not provide a specific number for the arena's capacity."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: The seating capacity is unspecified."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: The seating capacity is unspecified.",
+    "extracted_answer": "The seating capacity is unspecified."
+  },
+  "injected": null,
+  "injection_metadata": null,
+  "final_answer_comparison": null,
+  "errors": [
+    {
+      "stage": "injected",
+      "error": "ValueError('No suitable claim containing an existing numerical value was found in the Research Agent output.')",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/shlok2107/silent-compounding/scripts/phase7_injection_validation.py\", line 162, in main\n    injected_state = run_pipeline(\n                     ^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/pipelines/p1_linear.py\", line 238, in run_pipeline\n    return pipeline.invoke(initial_state)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 3913, in invoke\n    for chunk in self.stream(\n                 ^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 2967, in stream\n    for _ in runner.tick(\n             ^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/_runner.py\", line 207, in tick\n    run_with_retry(\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/_retry.py\", line 617, in run_with_retry\n    return task.proc.invoke(task.input, config)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/_internal/_runnable.py\", line 707, in invoke\n    input = context.run(step.invoke, input, config, **kwargs)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/_internal/_runnable.py\", line 447, in invoke\n    ret = self.func(*args, **kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/pipelines/p1_linear.py\", line 113, in research_node_adapter\n    corrupted_output, error_template = inject_error(\n                                       ^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/injection/injector.py\", line 26, in inject_error\n    error_template = generate_corrupted_claim(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/injection/error_bank.py\", line 542, in generate_corrupted_claim\n    raise ValueError(\nValueError: No suitable claim containing an existing numerical value was found in the Research Agent output.\nDuring task with name 'research' and id 'bb758b01-62c9-813b-07e6-c330ad112372'\n"
+    }
+  ],
+  "human_review_required": true
+}

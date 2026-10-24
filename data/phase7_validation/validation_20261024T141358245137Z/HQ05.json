@@ -1,0 +1,158 @@
+{
+  "task_id": "HQ05",
+  "error_type": "numerical",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "2014 S/S is the debut album of a South Korean boy group that was formed by who?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ05_DOC02",
+            "HQ05_DOC08",
+            "HQ05_DOC07",
+            "HQ05_DOC05",
+            "HQ05_DOC06"
+          ],
+          "retrieved_titles": [
+            "2014 S/S",
+            "Seventeen discography",
+            "SF9 (band)",
+            "Madtown",
+            "List of songs written by Ravi"
+          ],
+          "retrieval_scores": [
+            33.39366685217555,
+            28.19631186096577,
+            26.028080605980097,
+            26.0029289812606,
+            22.65746359494098
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.00032887503039091825
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: 2014 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.\n\nEVIDENCE: The context states that \"2014 S/S is the debut album of South Korean group WINNER. It was released on August 12, 2014 by the group's record label, YG Entertainment.\""
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: WINNER, a South Korean boy group formed by YG Entertainment, released their debut album \"2014 S/S\" on August 12, 2014."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: YG Entertainment"
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: YG Entertainment",
+    "extracted_answer": "YG Entertainment"
+  },
+  "injected": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "2014 S/S is the debut album of a South Korean boy group that was formed by who?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ05_DOC02",
+            "HQ05_DOC08",
+            "HQ05_DOC07",
+            "HQ05_DOC05",
+            "HQ05_DOC06"
+          ],
+          "retrieved_titles": [
+            "2014 S/S",
+            "Seventeen discography",
+            "SF9 (band)",
+            "Madtown",
+            "List of songs written by Ravi"
+          ],
+          "retrieval_scores": [
+            33.39366685217555,
+            28.19631186096577,
+            26.028080605980097,
+            26.0029289812606,
+            22.65746359494098
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0010102500673383474
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: 2012 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.\n\nEVIDENCE: The context states that \"2014 S/S is the debut album of South Korean group WINNER. It was released on August 12, 2014 by the group's record label, YG Entertainment.\""
+        }
+      },
+      {
+        "agent": "error_injector",
+        "output": {
+          "error_type": "numerical",
+          "injection_stage": "research",
+          "wording": "neutral",
+          "original_output": "FINDING: 2014 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.\n\nEVIDENCE: The context states that \"2014 S/S is the debut album of South Korean group WINNER. It was released on August 12, 2014 by the group's record label, YG Entertainment.\"",
+          "original_claim": "2014 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.",
+          "injected_claim": "2012 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.",
+          "injection_description": "Changed the release year to two years earlier",
+          "corrupted_output": "FINDING: 2012 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.\n\nEVIDENCE: The context states that \"2014 S/S is the debut album of South Korean group WINNER. It was released on August 12, 2014 by the group's record label, YG Entertainment.\""
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The debut album of a South Korean boy group formed by YG Entertainment is actually 2014 S/S by WINNER, not 2012 S/S. This is supported by the fact that 2014 S/S is mentioned as the debut album of WINNER, released by YG Entertainment in 2014."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: YG Entertainment"
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: YG Entertainment",
+    "extracted_answer": "YG Entertainment"
+  },
+  "injection_metadata": {
+    "error_type": "numerical",
+    "injection_stage": "research",
+    "wording": "neutral",
+    "original_output": "FINDING: 2014 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.\n\nEVIDENCE: The context states that \"2014 S/S is the debut album of South Korean group WINNER. It was released on August 12, 2014 by the group's record label, YG Entertainment.\"",
+    "original_claim": "2014 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.",
+    "injected_claim": "2012 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.",
+    "injection_description": "Changed the release year to two years earlier",
+    "corrupted_output": "FINDING: 2012 S/S is the debut album of a South Korean boy group that was formed by YG Entertainment.\n\nEVIDENCE: The context states that \"2014 S/S is the debut album of South Korean group WINNER. It was released on August 12, 2014 by the group's record label, YG Entertainment.\""
+  },
+  "final_answer_comparison": {
+    "baseline_exact_match": true,
+    "injected_exact_match": true,
+    "gold_answer_used_after_generation": true
+  },
+  "errors": [],
+  "human_review_required": true
+}

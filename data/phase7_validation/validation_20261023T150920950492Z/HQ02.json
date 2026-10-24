@@ -1,0 +1,158 @@
+{
+  "task_id": "HQ02",
+  "error_type": "factual",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "What science fantasy young adult series, told in first person, has a set of companion books narrating the stories of enslaved worlds and alien species?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ02_DOC08",
+            "HQ02_DOC05",
+            "HQ02_DOC01",
+            "HQ02_DOC00",
+            "HQ02_DOC02"
+          ],
+          "retrieved_titles": [
+            "Animorphs",
+            "List of Square Enix companion books",
+            "Victoria Hanley",
+            "Andre Norton Award",
+            "The Hork-Bajir Chronicles"
+          ],
+          "retrieval_scores": [
+            41.128452418359224,
+            28.240396420108247,
+            27.684410033619425,
+            27.012631919817544,
+            23.495245590908304
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.00046570796985179186
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the Animorphs series.\n\nEVIDENCE: The context mentions that \"The Hork-Bajir Chronicles\" is the second companion book to the \"Animorphs\" series, and that the companion books in the Animorphs series narrate the stories of enslaved worlds and alien species. Additionally, the context states that the Animorphs series is told in first person, with all six main characters taking turns narrating the books through their own perspectives."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The main finding is that the Animorphs series is a science fantasy young adult series told in first person. The important supporting facts are that the series has companion books, such as \"The Hork-Bajir Chronicles\", which narrate the stories of enslaved worlds and alien species, and that the series is narrated through the perspectives of six main characters."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: Animorphs series."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: Animorphs series.",
+    "extracted_answer": "Animorphs series."
+  },
+  "injected": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "What science fantasy young adult series, told in first person, has a set of companion books narrating the stories of enslaved worlds and alien species?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ02_DOC08",
+            "HQ02_DOC05",
+            "HQ02_DOC01",
+            "HQ02_DOC00",
+            "HQ02_DOC02"
+          ],
+          "retrieved_titles": [
+            "Animorphs",
+            "List of Square Enix companion books",
+            "Victoria Hanley",
+            "Andre Norton Award",
+            "The Hork-Bajir Chronicles"
+          ],
+          "retrieval_scores": [
+            41.128452418359224,
+            28.240396420108247,
+            27.684410033619425,
+            27.012631919817544,
+            23.495245590908304
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0012442079605534673
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the The Wheel of Time series.\n\nEVIDENCE: The context mentions that \"The Hork-Bajir Chronicles\" is the second companion book to the \"Animorphs\" series, and that the companion books in the Animorphs series narrate the stories of enslaved worlds and alien species. Additionally, the context states that the Animorphs series is told in first person, with all six main characters taking turns narrating the books through their own perspectives."
+        }
+      },
+      {
+        "agent": "error_injector",
+        "output": {
+          "error_type": "factual",
+          "injection_stage": "research",
+          "wording": "neutral",
+          "original_output": "FINDING: The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the Animorphs series.\n\nEVIDENCE: The context mentions that \"The Hork-Bajir Chronicles\" is the second companion book to the \"Animorphs\" series, and that the companion books in the Animorphs series narrate the stories of enslaved worlds and alien species. Additionally, the context states that the Animorphs series is told in first person, with all six main characters taking turns narrating the books through their own perspectives.",
+          "original_claim": "The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the Animorphs series.",
+          "injected_claim": "The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the The Wheel of Time series.",
+          "injection_description": "The series title was replaced with a different but plausible title",
+          "corrupted_output": "FINDING: The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the The Wheel of Time series.\n\nEVIDENCE: The context mentions that \"The Hork-Bajir Chronicles\" is the second companion book to the \"Animorphs\" series, and that the companion books in the Animorphs series narrate the stories of enslaved worlds and alien species. Additionally, the context states that the Animorphs series is told in first person, with all six main characters taking turns narrating the books through their own perspectives."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The Wheel of Time series is a science fantasy young adult series told in first person, similar to the \"Animorphs\" series, which also has companion books narrating the stories of enslaved worlds and alien species."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: The Wheel of Time series"
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: The Wheel of Time series",
+    "extracted_answer": "The Wheel of Time series"
+  },
+  "injection_metadata": {
+    "error_type": "factual",
+    "injection_stage": "research",
+    "wording": "neutral",
+    "original_output": "FINDING: The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the Animorphs series.\n\nEVIDENCE: The context mentions that \"The Hork-Bajir Chronicles\" is the second companion book to the \"Animorphs\" series, and that the companion books in the Animorphs series narrate the stories of enslaved worlds and alien species. Additionally, the context states that the Animorphs series is told in first person, with all six main characters taking turns narrating the books through their own perspectives.",
+    "original_claim": "The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the Animorphs series.",
+    "injected_claim": "The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the The Wheel of Time series.",
+    "injection_description": "The series title was replaced with a different but plausible title",
+    "corrupted_output": "FINDING: The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the The Wheel of Time series.\n\nEVIDENCE: The context mentions that \"The Hork-Bajir Chronicles\" is the second companion book to the \"Animorphs\" series, and that the companion books in the Animorphs series narrate the stories of enslaved worlds and alien species. Additionally, the context states that the Animorphs series is told in first person, with all six main characters taking turns narrating the books through their own perspectives."
+  },
+  "final_answer_comparison": {
+    "baseline_exact_match": false,
+    "injected_exact_match": false,
+    "gold_answer_used_after_generation": true
+  },
+  "errors": [],
+  "human_review_required": true
+}

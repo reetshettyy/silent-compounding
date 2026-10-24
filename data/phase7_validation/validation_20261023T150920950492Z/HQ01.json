@@ -1,0 +1,78 @@
+{
+  "task_id": "HQ01",
+  "error_type": "factual",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ01_DOC05",
+            "HQ01_DOC07",
+            "HQ01_DOC08",
+            "HQ01_DOC03",
+            "HQ01_DOC04"
+          ],
+          "retrieved_titles": [
+            "A Kiss for Corliss",
+            "Secretary of State for Constitutional Affairs",
+            "Village accountant",
+            "Meet Corliss Archer (TV series)",
+            "Lord High Treasurer"
+          ],
+          "retrieval_scores": [
+            21.985784776113285,
+            20.957557683364357,
+            18.63213928049275,
+            17.871161786518833,
+            17.763602793524782
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.00023075006902217865
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: The woman who portrayed Corliss Archer in the film Kiss and Tell held the government position of Secretary of State for Constitutional Affairs.\n\nEVIDENCE: There is no direct evidence in the provided context that links the woman who portrayed Corliss Archer in the film Kiss and Tell to the government position of Secretary of State for Constitutional Affairs. However, the context does mention that the film \"A Kiss for Corliss\" is a sequel to the 1945 film \"Kiss and Tell\", and that the film \"A Kiss for Corliss\" stars Shirley Temple in her final starring role. The context also mentions that the film \"A Kiss for Corliss\" was released in 1949, and that the office of Secretary of State for Constitutional Affairs was created in 2003, which is after the release of the film. Therefore, it is not possible to determine the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell based on the provided context."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The woman who portrayed Corliss Archer in the film Kiss and Tell is not linked to the government position of Secretary of State for Constitutional Affairs due to a temporal discrepancy, as the film was released in 1945 and the office was created in 2003."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: There is no government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, according to the summary."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: There is no government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, according to the summary.",
+    "extracted_answer": "There is no government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, according to the summary."
+  },
+  "injected": null,
+  "injection_metadata": null,
+  "final_answer_comparison": null,
+  "errors": [
+    {
+      "stage": "injected",
+      "error": "ValueError('Factual corruption target does not occur exactly in the original claim.\\nTarget: the woman who portrayed Corliss Archer in the film Kiss and Tell\\nOriginal: The woman who portrayed Corliss Archer in the film Kiss and Tell held the government position of Secretary of State for Constitutional Affairs.')",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/shlok2107/silent-compounding/scripts/phase7_injection_validation.py\", line 162, in main\n    injected_state = run_pipeline(\n                     ^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/pipelines/p1_linear.py\", line 234, in run_pipeline\n    return pipeline.invoke(initial_state)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 3913, in invoke\n    for chunk in self.stream(\n                 ^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 2967, in stream\n    for _ in runner.tick(\n             ^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/_runner.py\", line 207, in tick\n    run_with_retry(\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/_retry.py\", line 617, in run_with_retry\n    return task.proc.invoke(task.input, config)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/_internal/_runnable.py\", line 707, in invoke\n    input = context.run(step.invoke, input, config, **kwargs)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/_internal/_runnable.py\", line 447, in invoke\n    ret = self.func(*args, **kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/pipelines/p1_linear.py\", line 113, in research_node_adapter\n    corrupted_output, error_template = inject_error(\n                                       ^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/injection/injector.py\", line 26, in inject_error\n    error_template = generate_corrupted_claim(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/injection/error_bank.py\", line 521, in generate_corrupted_claim\n    template = _generate_factual_corruption(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/injection/error_bank.py\", line 305, in _generate_factual_corruption\n    raise ValueError(\nValueError: Factual corruption target does not occur exactly in the original claim.\nTarget: the woman who portrayed Corliss Archer in the film Kiss and Tell\nOriginal: The woman who portrayed Corliss Archer in the film Kiss and Tell held the government position of Secretary of State for Constitutional Affairs.\nDuring task with name 'research' and id 'f1afd2ff-8743-eed2-7ba4-3e6604966082'\n"
+    }
+  ],
+  "human_review_required": true
+}

@@ -1,0 +1,78 @@
+{
+  "task_id": "HQ04",
+  "error_type": "factual",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "The director of the romantic comedy \"Big Stone Gap\" is based in what New York city?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ04_DOC09",
+            "HQ04_DOC08",
+            "HQ04_DOC00",
+            "HQ04_DOC02",
+            "HQ04_DOC06"
+          ],
+          "retrieved_titles": [
+            "Big Stone Gap (film)",
+            "I Love NY (2015 film)",
+            "Just Another Romantic Wrestling Comedy",
+            "Nola (film)",
+            "Clinton, Minnesota"
+          ],
+          "retrieval_scores": [
+            21.87922851443138,
+            20.813454815892104,
+            20.247927710968032,
+            19.986088715386746,
+            16.149800717853388
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0009031669469550252
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: The director of the romantic comedy \"Big Stone Gap\" is based in the actual Virginia town of Big Stone Gap, but the question asks for a New York city.\n\nEVIDENCE: The context states that the story of \"Big Stone Gap\" is set in the actual Virginia town of Big Stone Gap circa 1970s, but there is no mention of a New York city being associated with the film."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The director of the romantic comedy \"Big Stone Gap\" is based in the actual Virginia town of Big Stone Gap, not a New York city, as the context and evidence suggest it is set in Virginia circa 1970s."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: Big Stone Gap, Virginia."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: Big Stone Gap, Virginia.",
+    "extracted_answer": "Big Stone Gap, Virginia."
+  },
+  "injected": null,
+  "injection_metadata": null,
+  "final_answer_comparison": null,
+  "errors": [
+    {
+      "stage": "injected",
+      "error": "ValueError('Factual injection must contain exactly one contiguous changed span.')",
+      "traceback": "Traceback (most recent call last):\n  File \"/Users/shlok2107/silent-compounding/scripts/phase7_injection_validation.py\", line 162, in main\n    injected_state = run_pipeline(\n                     ^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/pipelines/p1_linear.py\", line 234, in run_pipeline\n    return pipeline.invoke(initial_state)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 3913, in invoke\n    for chunk in self.stream(\n                 ^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/main.py\", line 2967, in stream\n    for _ in runner.tick(\n             ^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/_runner.py\", line 207, in tick\n    run_with_retry(\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/pregel/_retry.py\", line 617, in run_with_retry\n    return task.proc.invoke(task.input, config)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/_internal/_runnable.py\", line 707, in invoke\n    input = context.run(step.invoke, input, config, **kwargs)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/anaconda3/envs/silent-compounding/lib/python3.12/site-packages/langgraph/_internal/_runnable.py\", line 447, in invoke\n    ret = self.func(*args, **kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/pipelines/p1_linear.py\", line 113, in research_node_adapter\n    corrupted_output, error_template = inject_error(\n                                       ^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/injection/injector.py\", line 26, in inject_error\n    error_template = generate_corrupted_claim(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shlok2107/silent-compounding/injection/error_bank.py\", line 554, in generate_corrupted_claim\n    _validate_corruption(\n  File \"/Users/shlok2107/silent-compounding/injection/error_bank.py\", line 210, in _validate_corruption\n    _validate_factual_substitution(\n  File \"/Users/shlok2107/silent-compounding/injection/error_bank.py\", line 121, in _validate_factual_substitution\n    raise ValueError(\nValueError: Factual injection must contain exactly one contiguous changed span.\nDuring task with name 'research' and id 'fab54743-bf75-b5fe-a4ef-836fbc6ee7a1'\n"
+    }
+  ],
+  "human_review_required": true
+}

@@ -1,0 +1,158 @@
+{
+  "task_id": "HQ08",
+  "error_type": "factual",
+  "injection_stage": "research",
+  "seed": 42,
+  "baseline": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "Who is older, Annie Morton or Terry Richardson?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ08_DOC00",
+            "HQ08_DOC09",
+            "HQ08_DOC04",
+            "HQ02_DOC03",
+            "HQ02_DOC00"
+          ],
+          "retrieved_titles": [
+            "Annie Morton",
+            "Kenton Richardson",
+            "Gumbo (PJ Morton album)",
+            "Shadowshaper",
+            "Andre Norton Award"
+          ],
+          "retrieval_scores": [
+            12.966183299958303,
+            7.890849180473705,
+            6.44260471115042,
+            6.200159610391449,
+            4.8268352247611235
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0006477499846369028
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: Annie Morton is older than Terry Richardson.\n\nEVIDENCE: Annie Morton was born on October 8, 1970, and Terry Richardson was born on July 26, 1999."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: Annie Morton is older than Terry Richardson, as evidenced by Annie's birthdate of October 8, 1970, being before Terry's birthdate of July 26, 1999."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: Annie Morton."
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: Annie Morton.",
+    "extracted_answer": "Annie Morton."
+  },
+  "injected": {
+    "trace": [
+      {
+        "agent": "retriever",
+        "retrieval": {
+          "query": "Who is older, Annie Morton or Terry Richardson?",
+          "retriever_type": "BM25",
+          "top_k": 5,
+          "retrieved_document_ids": [
+            "HQ08_DOC00",
+            "HQ08_DOC09",
+            "HQ08_DOC04",
+            "HQ02_DOC03",
+            "HQ02_DOC00"
+          ],
+          "retrieved_titles": [
+            "Annie Morton",
+            "Kenton Richardson",
+            "Gumbo (PJ Morton album)",
+            "Shadowshaper",
+            "Andre Norton Award"
+          ],
+          "retrieval_scores": [
+            12.966183299958303,
+            7.890849180473705,
+            6.44260471115042,
+            6.200159610391449,
+            4.8268352247611235
+          ],
+          "retrieval_rank": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_latency": 0.0007732090307399631
+        }
+      },
+      {
+        "agent": "research",
+        "output": {
+          "output": "FINDING: Terry Morton is older than Terry Richardson.\n\nEVIDENCE: Annie Morton was born on October 8, 1970, and Terry Richardson was born on July 26, 1999."
+        }
+      },
+      {
+        "agent": "error_injector",
+        "output": {
+          "error_type": "factual",
+          "injection_stage": "research",
+          "wording": "neutral",
+          "original_output": "FINDING: Annie Morton is older than Terry Richardson.\n\nEVIDENCE: Annie Morton was born on October 8, 1970, and Terry Richardson was born on July 26, 1999.",
+          "original_claim": "Annie Morton is older than Terry Richardson.",
+          "injected_claim": "Terry Morton is older than Terry Richardson.",
+          "injection_description": "Replaced the first name of the person with a plausible but false name",
+          "corrupted_output": "FINDING: Terry Morton is older than Terry Richardson.\n\nEVIDENCE: Annie Morton was born on October 8, 1970, and Terry Richardson was born on July 26, 1999."
+        }
+      },
+      {
+        "agent": "summarizer",
+        "output": {
+          "output": "SUMMARY: The main finding is that Terry Morton is older than Terry Richardson. This is supported by the fact that Annie Morton was born in 1970, which suggests that Terry Morton was born before 1999, and Terry Richardson was born in 1999."
+        }
+      },
+      {
+        "agent": "action",
+        "output": {
+          "output": "FINAL ANSWER: Terry Morton"
+        }
+      }
+    ],
+    "final_output": "FINAL ANSWER: Terry Morton",
+    "extracted_answer": "Terry Morton"
+  },
+  "injection_metadata": {
+    "error_type": "factual",
+    "injection_stage": "research",
+    "wording": "neutral",
+    "original_output": "FINDING: Annie Morton is older than Terry Richardson.\n\nEVIDENCE: Annie Morton was born on October 8, 1970, and Terry Richardson was born on July 26, 1999.",
+    "original_claim": "Annie Morton is older than Terry Richardson.",
+    "injected_claim": "Terry Morton is older than Terry Richardson.",
+    "injection_description": "Replaced the first name of the person with a plausible but false name",
+    "corrupted_output": "FINDING: Terry Morton is older than Terry Richardson.\n\nEVIDENCE: Annie Morton was born on October 8, 1970, and Terry Richardson was born on July 26, 1999."
+  },
+  "final_answer_comparison": {
+    "baseline_exact_match": false,
+    "injected_exact_match": false,
+    "gold_answer_used_after_generation": true
+  },
+  "errors": [],
+  "human_review_required": true
+}

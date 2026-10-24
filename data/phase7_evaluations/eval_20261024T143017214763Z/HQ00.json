@@ -1,0 +1,149 @@
+{
+  "task_id": "HQ00",
+  "injection_stage": "research",
+  "error_type": "numerical",
+  "claims": {
+    "original": "Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American.",
+    "injected": "Scott Derrickson is the director of the 2018 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American."
+  },
+  "stage_judgments": {
+    "research": {
+      "outcome": "uncertain",
+      "severity": 0.5,
+      "rationale": "The output correctly states that Scott Derrickson and Ed Wood are of different nationalities, but it also incorrectly states that Scott Derrickson directed the 2018 version of 'Doctor Strange'. The output omits the original claim about the 2016 version, making it uncertain whether the error was amplified or not.",
+      "stage": "research",
+      "error_type": "numerical",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "summary": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The output incorrectly asserts that Scott Derrickson directed the 2018 'Doctor Strange' film, which is a factual error. Additionally, the output incorrectly includes Ed Wood in the discussion, who is not related to the question or the injected error.",
+      "stage": "summary",
+      "error_type": "numerical",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "final": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The output incorrectly asserts that Scott Derrickson directed the 2018 'Doctor Strange' film, which contradicts the original claim that he directed the 2016 film. This amplifies the error by introducing a materially false claim.",
+      "stage": "final",
+      "error_type": "numerical",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    }
+  },
+  "deterministic_claim_match": {
+    "research": {
+      "status": "error_retained",
+      "method": "normalized_exact_text",
+      "interpretation": "injected claim found exactly after normalization"
+    },
+    "summary": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    },
+    "final": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    }
+  },
+  "reference_metrics": null,
+  "cascade_analysis": {
+    "overall_outcome": "uncertain",
+    "overall_rationale": "At least one stage has uncertain or unmeasurable error evidence.",
+    "stage_results": {
+      "research": {
+        "claim_status": "error_retained",
+        "error_outcome": "uncertain",
+        "severity": 0.5,
+        "rationale": "The output correctly states that Scott Derrickson and Ed Wood are of different nationalities, but it also incorrectly states that Scott Derrickson directed the 2018 version of 'Doctor Strange'. The output omits the original claim about the 2016 version, making it uncertain whether the error was amplified or not."
+      },
+      "summary": {
+        "claim_status": "neither_detected",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The output incorrectly asserts that Scott Derrickson directed the 2018 'Doctor Strange' film, which is a factual error. Additionally, the output incorrectly includes Ed Wood in the discussion, who is not related to the question or the injected error."
+      },
+      "final": {
+        "claim_status": "neither_detected",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The output incorrectly asserts that Scott Derrickson directed the 2018 'Doctor Strange' film, which contradicts the original claim that he directed the 2016 film. This amplifies the error by introducing a materially false claim."
+      }
+    },
+    "transitions": [
+      {
+        "from_stage": "research",
+        "to_stage": "summary",
+        "claim_status_before": "error_retained",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "uncertain",
+        "error_outcome_after": "amplified",
+        "error_persistence": false,
+        "outcome_changed": true
+      },
+      {
+        "from_stage": "summary",
+        "to_stage": "final",
+        "claim_status_before": "neither_detected",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "amplified",
+        "error_persistence": false,
+        "outcome_changed": false
+      }
+    ],
+    "amplification_evidence": null,
+    "amplification_evidence_accepted": false,
+    "evaluation_method": "error_outcome_comparison_without_answer_correctness_inference",
+    "limitations": [
+      "Claim-presence checks use exact normalized text.",
+      "Stage outcomes are independent LLM-judge judgments and require validation.",
+      "Error correction does not imply factual answer correctness.",
+      "Amplification requires comparative evidence and separate validation."
+    ]
+  },
+  "evaluation_method": "independent_error_judge_plus_stage_comparison",
+  "gold_answer_used_by_error_judge": false,
+  "answer_correctness_evaluated": false,
+  "trace_path": "data/phase7_validation/validation_20261024T141358245137Z/HQ00.json",
+  "final_answer_reference_metrics": {
+    "baseline": {
+      "bleu4": 0.0,
+      "meteor": 0.45454545454545453,
+      "rouge_l": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fmeasure": 1.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.9644323587417603,
+        "recall": 0.9289253354072571,
+        "f1": 0.946345865726471
+      },
+      "evaluated_text": "Yes."
+    },
+    "injected": {
+      "bleu4": 0.0,
+      "meteor": 0.5,
+      "rouge_l": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "fmeasure": 1.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.9670931100845337,
+        "recall": 0.9670931100845337,
+        "f1": 0.9670931100845337
+      },
+      "evaluated_text": "Yes"
+    }
+  }
+}

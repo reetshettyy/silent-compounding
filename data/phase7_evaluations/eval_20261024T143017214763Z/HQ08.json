@@ -1,0 +1,149 @@
+{
+  "task_id": "HQ08",
+  "injection_stage": "research",
+  "error_type": "numerical",
+  "claims": {
+    "original": "Annie Morton was born on October 8, 1970, and Terry Richardson was born on July 26, 1999.",
+    "injected": "Annie Morton was born on October 8, 1975, and Terry Richardson was born on July 26, 1999."
+  },
+  "stage_judgments": {
+    "research": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The stage output incorrectly states that Annie Morton was born in 1975, which is an injected error. Additionally, the output asserts that Annie Morton is older than Terry Richardson, a claim that is materially false due to the error in the birth year.",
+      "stage": "research",
+      "error_type": "numerical",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "summary": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The stage output incorrectly states that Annie Morton was born in 1975, which is an error amplification of the injected claim. The original claim states she was born in 1970, and the correct year of birth is essential to determining who is older between the two individuals.",
+      "stage": "summary",
+      "error_type": "numerical",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "final": {
+      "outcome": "corrected",
+      "severity": 0.0,
+      "rationale": "The output correctly identifies Annie Morton as older, despite the injected error in the birth year. The correct birth year for Annie Morton is 1970, not 1975.",
+      "stage": "final",
+      "error_type": "numerical",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    }
+  },
+  "deterministic_claim_match": {
+    "research": {
+      "status": "error_retained",
+      "method": "normalized_exact_text",
+      "interpretation": "injected claim found exactly after normalization"
+    },
+    "summary": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    },
+    "final": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    }
+  },
+  "reference_metrics": null,
+  "cascade_analysis": {
+    "overall_outcome": "corrected",
+    "overall_rationale": "The error judge classified the final-stage injected error as corrected. This does not establish that the final answer is factually correct.",
+    "stage_results": {
+      "research": {
+        "claim_status": "error_retained",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The stage output incorrectly states that Annie Morton was born in 1975, which is an injected error. Additionally, the output asserts that Annie Morton is older than Terry Richardson, a claim that is materially false due to the error in the birth year."
+      },
+      "summary": {
+        "claim_status": "neither_detected",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The stage output incorrectly states that Annie Morton was born in 1975, which is an error amplification of the injected claim. The original claim states she was born in 1970, and the correct year of birth is essential to determining who is older between the two individuals."
+      },
+      "final": {
+        "claim_status": "neither_detected",
+        "error_outcome": "corrected",
+        "severity": 0.0,
+        "rationale": "The output correctly identifies Annie Morton as older, despite the injected error in the birth year. The correct birth year for Annie Morton is 1970, not 1975."
+      }
+    },
+    "transitions": [
+      {
+        "from_stage": "research",
+        "to_stage": "summary",
+        "claim_status_before": "error_retained",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "amplified",
+        "error_persistence": false,
+        "outcome_changed": false
+      },
+      {
+        "from_stage": "summary",
+        "to_stage": "final",
+        "claim_status_before": "neither_detected",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "corrected",
+        "error_persistence": false,
+        "outcome_changed": true
+      }
+    ],
+    "amplification_evidence": null,
+    "amplification_evidence_accepted": false,
+    "evaluation_method": "error_outcome_comparison_without_answer_correctness_inference",
+    "limitations": [
+      "Claim-presence checks use exact normalized text.",
+      "Stage outcomes are independent LLM-judge judgments and require validation.",
+      "Error correction does not imply factual answer correctness.",
+      "Amplification requires comparative evidence and separate validation."
+    ]
+  },
+  "evaluation_method": "independent_error_judge_plus_stage_comparison",
+  "gold_answer_used_by_error_judge": false,
+  "answer_correctness_evaluated": false,
+  "trace_path": "data/phase7_validation/validation_20261024T141358245137Z/HQ08.json",
+  "final_answer_reference_metrics": {
+    "baseline": {
+      "bleu4": 0.0,
+      "meteor": 0.0,
+      "rouge_l": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "fmeasure": 0.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.8957005143165588,
+        "recall": 0.9059041738510132,
+        "f1": 0.9007734060287476
+      },
+      "evaluated_text": "Annie Morton is older."
+    },
+    "injected": {
+      "bleu4": 0.0,
+      "meteor": 0.0,
+      "rouge_l": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "fmeasure": 0.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.9253392219543457,
+        "recall": 0.9158170819282532,
+        "f1": 0.9205535650253296
+      },
+      "evaluated_text": "Annie Morton."
+    }
+  }
+}

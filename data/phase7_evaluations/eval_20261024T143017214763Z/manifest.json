@@ -1,0 +1,38 @@
+{
+  "purpose": "Phase 7 independent-judge predictions and reference metrics",
+  "status": "technical_validation_not_main_experiment",
+  "source_batch": "data/phase7_validation/validation_20261024T141358245137Z",
+  "task_ids": [
+    "HQ00",
+    "HQ01",
+    "HQ05",
+    "HQ06",
+    "HQ08"
+  ],
+  "models": {
+    "models": {
+      "research_model": "llama3.1:latest",
+      "summarizer_model": "llama3.1:latest",
+      "answer_model": "llama3.1:latest",
+      "evaluator_model": "mistral:latest"
+    },
+    "generation_models_are_fully_distinct": false,
+    "generation_stages_share_models": true,
+    "shared_generation_model_groups": {
+      "llama3.1:latest": [
+        "research_model",
+        "summarizer_model",
+        "answer_model"
+      ]
+    },
+    "evaluator_separate_from_generation": true,
+    "independence_note": "Evaluator uses a different configured model from all generation stages. Research, summarizer, and answer stages share models where listed; separate model names alone do not establish complete evaluator independence."
+  },
+  "bertscore_included": true,
+  "gold_answer_used_by_error_judge": false,
+  "limitations": [
+    "Judge outputs are automated LLM judgments and require human validation.",
+    "BLEU/METEOR/BERTScore measure similarity to gold, not factual correctness.",
+    "Generation stages share one model; see models.shared_generation_model_groups."
+  ]
+}

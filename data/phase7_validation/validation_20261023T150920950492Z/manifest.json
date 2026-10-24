@@ -1,0 +1,75 @@
+{
+  "purpose": "Phase 7 technical injection validation",
+  "status": "technical_validation_not_main_experiment",
+  "created_utc": "20261023T150920950492Z",
+  "task_ids": [
+    "HQ01",
+    "HQ02",
+    "HQ04",
+    "HQ05",
+    "HQ06",
+    "HQ07",
+    "HQ08",
+    "HQ09"
+  ],
+  "error_type": "factual",
+  "injection_stage": "research",
+  "wording": "neutral",
+  "seed": 42,
+  "models": {
+    "research_model": "llama3.1:latest",
+    "summarizer_model": "llama3.1:latest",
+    "answer_model": "llama3.1:latest",
+    "evaluator_model": "mistral:latest"
+  },
+  "gold_answer_used_for_generation": false,
+  "gold_answer_used_for_error_judging": false,
+  "limitations": [
+    "A seed does not guarantee deterministic LLM outputs.",
+    "Generated corruptions require independent verification that they are genuinely false.",
+    "Final-answer exact-match is not a factuality judge.",
+    "This run does not establish scientific validity."
+  ],
+  "tasks": [
+    {
+      "task_id": "HQ01",
+      "status": "injected_run_failed",
+      "errors": 1
+    },
+    {
+      "task_id": "HQ02",
+      "status": "both_runs_completed",
+      "errors": 0
+    },
+    {
+      "task_id": "HQ04",
+      "status": "injected_run_failed",
+      "errors": 1
+    },
+    {
+      "task_id": "HQ05",
+      "status": "both_runs_completed",
+      "errors": 0
+    },
+    {
+      "task_id": "HQ06",
+      "status": "both_runs_completed",
+      "errors": 0
+    },
+    {
+      "task_id": "HQ07",
+      "status": "both_runs_completed",
+      "errors": 0
+    },
+    {
+      "task_id": "HQ08",
+      "status": "both_runs_completed",
+      "errors": 0
+    },
+    {
+      "task_id": "HQ09",
+      "status": "both_runs_completed",
+      "errors": 0
+    }
+  ]
+}

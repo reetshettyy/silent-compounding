@@ -1,0 +1,39 @@
+{
+  "purpose": "Phase 7 technical injection validation",
+  "status": "technical_validation_not_main_experiment",
+  "created_utc": "20261023T141329327608Z",
+  "task_ids": [
+    "HQ00",
+    "HQ03"
+  ],
+  "error_type": "factual",
+  "injection_stage": "research",
+  "wording": "neutral",
+  "seed": 42,
+  "models": {
+    "research_model": "llama3.1:latest",
+    "summarizer_model": "llama3.1:latest",
+    "answer_model": "llama3.1:latest",
+    "evaluator_model": "mistral:latest"
+  },
+  "gold_answer_used_for_generation": false,
+  "gold_answer_used_for_error_judging": false,
+  "limitations": [
+    "A seed does not guarantee deterministic LLM outputs.",
+    "Generated corruptions require independent verification that they are genuinely false.",
+    "Final-answer exact-match is not a factuality judge.",
+    "This run does not establish scientific validity."
+  ],
+  "tasks": [
+    {
+      "task_id": "HQ00",
+      "status": "both_runs_completed",
+      "errors": 0
+    },
+    {
+      "task_id": "HQ03",
+      "status": "both_runs_completed",
+      "errors": 0
+    }
+  ]
+}

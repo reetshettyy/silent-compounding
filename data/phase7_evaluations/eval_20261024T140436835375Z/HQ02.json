@@ -1,0 +1,149 @@
+{
+  "task_id": "HQ02",
+  "injection_stage": "research",
+  "error_type": "factual",
+  "claims": {
+    "original": "The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the Animorphs series.",
+    "injected": "The science fantasy young adult series told in first person, with a set of companion books narrating the stories of enslaved worlds and alien species, is the The Wheel of Time series."
+  },
+  "stage_judgments": {
+    "research": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The output incorrectly identifies 'The Wheel of Time' as the series in question, while the context provides evidence that the correct series is 'Animorphs'. The output also adds further materially false claims by stating that 'The Wheel of Time' is the series in question.",
+      "stage": "research",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "summary": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The stage output materially asserts the injected claim that The Wheel of Time series is the science fantasy young adult series with companion books narrating the stories of enslaved worlds and alien species, and adds further unsupported claims by comparing it to the Animorphs series.",
+      "stage": "summary",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    },
+    "final": {
+      "outcome": "amplified",
+      "severity": 1.0,
+      "rationale": "The final answer provided by the system is 'The Wheel of Time series', which is the injected claim, and does not correct the original claim (Animorphs series). Additionally, the output adds further materially false or unsupported claims by asserting that The Wheel of Time series is the correct answer.",
+      "stage": "final",
+      "error_type": "factual",
+      "judge_model": "mistral:latest",
+      "evaluation_method": "independent_llm_error_judge"
+    }
+  },
+  "deterministic_claim_match": {
+    "research": {
+      "status": "error_retained",
+      "method": "normalized_exact_text",
+      "interpretation": "injected claim found exactly after normalization"
+    },
+    "summary": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    },
+    "final": {
+      "status": "neither_detected",
+      "method": "normalized_exact_text",
+      "interpretation": "neither complete claim found"
+    }
+  },
+  "reference_metrics": null,
+  "cascade_analysis": {
+    "overall_outcome": "uncertain",
+    "overall_rationale": "A stage-level amplification judgment alone does not establish that error increased across stages.",
+    "stage_results": {
+      "research": {
+        "claim_status": "error_retained",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The output incorrectly identifies 'The Wheel of Time' as the series in question, while the context provides evidence that the correct series is 'Animorphs'. The output also adds further materially false claims by stating that 'The Wheel of Time' is the series in question."
+      },
+      "summary": {
+        "claim_status": "neither_detected",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The stage output materially asserts the injected claim that The Wheel of Time series is the science fantasy young adult series with companion books narrating the stories of enslaved worlds and alien species, and adds further unsupported claims by comparing it to the Animorphs series."
+      },
+      "final": {
+        "claim_status": "neither_detected",
+        "error_outcome": "amplified",
+        "severity": 1.0,
+        "rationale": "The final answer provided by the system is 'The Wheel of Time series', which is the injected claim, and does not correct the original claim (Animorphs series). Additionally, the output adds further materially false or unsupported claims by asserting that The Wheel of Time series is the correct answer."
+      }
+    },
+    "transitions": [
+      {
+        "from_stage": "research",
+        "to_stage": "summary",
+        "claim_status_before": "error_retained",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "amplified",
+        "error_persistence": false,
+        "outcome_changed": false
+      },
+      {
+        "from_stage": "summary",
+        "to_stage": "final",
+        "claim_status_before": "neither_detected",
+        "claim_status_after": "neither_detected",
+        "error_outcome_before": "amplified",
+        "error_outcome_after": "amplified",
+        "error_persistence": false,
+        "outcome_changed": false
+      }
+    ],
+    "amplification_evidence": null,
+    "amplification_evidence_accepted": false,
+    "evaluation_method": "error_outcome_comparison_without_answer_correctness_inference",
+    "limitations": [
+      "Claim-presence checks use exact normalized text.",
+      "Stage outcomes are independent LLM-judge judgments and require validation.",
+      "Error correction does not imply factual answer correctness.",
+      "Amplification requires comparative evidence and separate validation."
+    ]
+  },
+  "evaluation_method": "independent_error_judge_plus_stage_comparison",
+  "gold_answer_used_by_error_judge": false,
+  "answer_correctness_evaluated": false,
+  "trace_path": "data/phase7_validation/validation_20261023T150920950492Z/HQ02.json",
+  "final_answer_reference_metrics": {
+    "baseline": {
+      "bleu4": 0.1495348781221221,
+      "meteor": 0.4166666666666667,
+      "rouge_l": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "fmeasure": 0.6666666666666666
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.9580686092376709,
+        "recall": 0.9655529856681824,
+        "f1": 0.961796224117279
+      },
+      "evaluated_text": "Animorphs series."
+    },
+    "injected": {
+      "bleu4": 0.0,
+      "meteor": 0.0,
+      "rouge_l": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "fmeasure": 0.0
+      },
+      "metric_scope": "reference_similarity_not_factuality",
+      "bertscore": {
+        "precision": 0.8593003749847412,
+        "recall": 0.8865252137184143,
+        "f1": 0.872700572013855
+      },
+      "evaluated_text": "The Wheel of Time series"
+    }
+  }
+}
