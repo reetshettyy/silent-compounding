@@ -1,0 +1,71 @@
+{
+  "status": "human_provided_spot_check_flagged_rows_only",
+  "source_faithfulness_file": "data/phase8_faithfulness/faithfulness_20261024T154311Z.json",
+  "definition": "faithfulness to upstream research output (FINDING + EVIDENCE), not truth against gold",
+  "provided_by": "researcher",
+  "recorded_utc": "2026-10-26T11:50:25.957108Z",
+  "n": 6,
+  "judge_flag_confirmed": 1,
+  "rows": [
+    {
+      "run_id": "HQ01_num",
+      "version": "baseline",
+      "judge_verdict": "unfaithful",
+      "judge_unsupported_claims": [
+        "The film 'A Kiss for Corliss' (1949) is a sequel to Kiss and Tell"
+      ],
+      "human_verdict": "faithful",
+      "human_reason": "The upstream evidence explicitly states both the 1945 sequel relationship and the 1949 release year."
+    },
+    {
+      "run_id": "HQ02",
+      "version": "injected",
+      "judge_verdict": "unfaithful",
+      "judge_unsupported_claims": [
+        "The Wheel of Time series is similar to the 'Animorphs' series"
+      ],
+      "human_verdict": "unfaithful",
+      "human_reason": "The finding names The Wheel of Time, but the evidence does not support the claimed similarity to Animorphs."
+    },
+    {
+      "run_id": "HQ05",
+      "version": "injected",
+      "judge_verdict": "unfaithful",
+      "judge_unsupported_claims": [
+        "The album is from the group WINNER"
+      ],
+      "human_verdict": "faithful",
+      "human_reason": "The upstream evidence explicitly identifies WINNER as the group behind 2014 S/S."
+    },
+    {
+      "run_id": "HQ05_num",
+      "version": "injected",
+      "judge_verdict": "unfaithful",
+      "judge_unsupported_claims": [
+        "The debut album of a South Korean boy group formed by YG Entertainment is actually 2014 S/S by WINNER"
+      ],
+      "human_verdict": "faithful",
+      "human_reason": "The summary's correction is supported by upstream evidence, which states 2014 S/S, despite the incorrect finding."
+    },
+    {
+      "run_id": "HQ07",
+      "version": "injected",
+      "judge_verdict": "unfaithful",
+      "judge_unsupported_claims": [
+        "The Lewiston Maineiacs played their home games at the Central Maine Civic Center"
+      ],
+      "human_verdict": "faithful",
+      "human_reason": "The finding names the Civic Center and the evidence names the Colisée; the summary reflects both upstream claims."
+    },
+    {
+      "run_id": "HQ09",
+      "version": "injected",
+      "judge_verdict": "unfaithful",
+      "judge_unsupported_claims": [
+        "Local H is from Canada"
+      ],
+      "human_verdict": "faithful",
+      "human_reason": "The finding explicitly says Canada, so the summary faithfully repeats the upstream finding despite contradictory evidence."
+    }
+  ]
+}

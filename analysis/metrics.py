@@ -102,3 +102,18 @@ def evaluate_trace(
             stage_results["final"] == "original_restored"
         ),
     }
+
+
+# Phase 8: cascade metrics live in evaluation/cascade_metrics.py (single source of truth).
+# Re-exported here so analysis/metrics.py is the one import point; no code is duplicated.
+from evaluation.cascade_metrics import (  # noqa: E402,F401
+    acceptance_rate,
+    amplification_factor,
+    error_correction_rate,
+    error_detection_rate,
+    error_survival_rate,
+    final_error_propagation_rate,
+    mean_amplification_factor,
+    point_of_correction,
+    point_of_correction_distribution,
+)
