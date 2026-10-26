@@ -17,7 +17,6 @@ CSV_COLUMNS = [
     "correction_stage",
     "final_error",
     "severity",
-    "self_reported_confidence",
     "actual_correct",
     "raw_trace_path",
 ]
