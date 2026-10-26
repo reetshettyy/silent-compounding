@@ -21,3 +21,8 @@ Adding "possibly" or "apparently" does not by itself count as correction (flag: 
 ## 3. Reporting
 - Reviewer had seen automated labels for the runs labeled after the Phase 8 smoke test (2026-10-24); report those labels as non-blind.
 - Report runs and distinct questions separately.
+
+## 4. Omission rule (adopted 2026-10-26)
+- A gold-correct final answer counts as `corrected` when it resolves the injected error.
+- Intermediate-stage omission of the injected claim, without explicit rejection or replacement, is `uncertain`.
+- Not covered by the rule as written: a final answer that omits the injected claim but is not gold-correct. The reviewer decides per line and the report lists those decisions.

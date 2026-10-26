@@ -1,0 +1,467 @@
+{
+  "status": "report_only_no_threshold",
+  "headline_held_out_summary_final": {
+    "n": 20,
+    "combined": "11/20 = 55.0%",
+    "raw": "11/20 = 55.0%",
+    "kappa_combined": 0.3979933110367893,
+    "kappa_raw": 0.3979933110367893
+  },
+  "rows": [
+    {
+      "review_id": "HQ00_research",
+      "task_id": "HQ00",
+      "stage": "research",
+      "human": "survived",
+      "raw": "uncertain",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ00_summary",
+      "task_id": "HQ00",
+      "stage": "summary",
+      "human": "amplified",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ00_final",
+      "task_id": "HQ00",
+      "stage": "final",
+      "human": "survived",
+      "raw": "survived",
+      "combined": "survived",
+      "source": "independent_judge",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ03_research",
+      "task_id": "HQ03",
+      "stage": "research",
+      "human": "survived",
+      "raw": "uncertain",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ03_summary",
+      "task_id": "HQ03",
+      "stage": "summary",
+      "human": "amplified",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ03_final",
+      "task_id": "HQ03",
+      "stage": "final",
+      "human": "corrected",
+      "raw": "corrected",
+      "combined": "corrected",
+      "source": "independent_judge",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ02_research",
+      "task_id": "HQ02",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ02_summary",
+      "task_id": "HQ02",
+      "stage": "summary",
+      "human": "amplified",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ02_final",
+      "task_id": "HQ02",
+      "stage": "final",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": true,
+      "flags": []
+    },
+    {
+      "review_id": "HQ05_research",
+      "task_id": "HQ05",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ05_summary",
+      "task_id": "HQ05",
+      "stage": "summary",
+      "human": "corrected",
+      "raw": "corrected",
+      "combined": "corrected",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ05_final",
+      "task_id": "HQ05",
+      "stage": "final",
+      "human": "corrected",
+      "raw": "corrected",
+      "combined": "corrected",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ06_research",
+      "task_id": "HQ06",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ06_summary",
+      "task_id": "HQ06",
+      "stage": "summary",
+      "human": "amplified",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "hedged_injection"
+      ]
+    },
+    {
+      "review_id": "HQ06_final",
+      "task_id": "HQ06",
+      "stage": "final",
+      "human": "uncertain",
+      "raw": "uncertain",
+      "combined": "uncertain",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ07_research",
+      "task_id": "HQ07",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": [
+        "hedged_injection"
+      ]
+    },
+    {
+      "review_id": "HQ07_summary",
+      "task_id": "HQ07",
+      "stage": "summary",
+      "human": "corrected",
+      "raw": "uncertain",
+      "combined": "uncertain",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ07_final",
+      "task_id": "HQ07",
+      "stage": "final",
+      "human": "uncertain",
+      "raw": "uncertain",
+      "combined": "uncertain",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ08_research",
+      "task_id": "HQ08",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ08_summary",
+      "task_id": "HQ08",
+      "stage": "summary",
+      "human": "amplified",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ08_final",
+      "task_id": "HQ08",
+      "stage": "final",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ09_research",
+      "task_id": "HQ09",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": [
+        "hedged_injection"
+      ]
+    },
+    {
+      "review_id": "HQ09_summary",
+      "task_id": "HQ09",
+      "stage": "summary",
+      "human": "amplified",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "hedged_injection"
+      ]
+    },
+    {
+      "review_id": "HQ09_final",
+      "task_id": "HQ09",
+      "stage": "final",
+      "human": "survived",
+      "raw": "corrected",
+      "combined": "corrected",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ00_research_num",
+      "task_id": "HQ00",
+      "stage": "research",
+      "human": "survived",
+      "raw": "uncertain",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ00_summary_num",
+      "task_id": "HQ00",
+      "stage": "summary",
+      "human": "uncertain",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ00_final_num",
+      "task_id": "HQ00",
+      "stage": "final",
+      "human": "corrected",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ01_research_num",
+      "task_id": "HQ01",
+      "stage": "research",
+      "human": "survived",
+      "raw": "uncertain",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ01_summary_num",
+      "task_id": "HQ01",
+      "stage": "summary",
+      "human": "uncertain",
+      "raw": "uncertain",
+      "combined": "uncertain",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ01_final_num",
+      "task_id": "HQ01",
+      "stage": "final",
+      "human": "uncertain",
+      "raw": "uncertain",
+      "combined": "uncertain",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ05_research_num",
+      "task_id": "HQ05",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ05_summary_num",
+      "task_id": "HQ05",
+      "stage": "summary",
+      "human": "corrected",
+      "raw": "corrected",
+      "combined": "corrected",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ05_final_num",
+      "task_id": "HQ05",
+      "stage": "final",
+      "human": "corrected",
+      "raw": "corrected",
+      "combined": "corrected",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ06_research_num",
+      "task_id": "HQ06",
+      "stage": "research",
+      "human": "survived",
+      "raw": "survived",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ06_summary_num",
+      "task_id": "HQ06",
+      "stage": "summary",
+      "human": "uncertain",
+      "raw": "survived",
+      "combined": "survived",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ06_final_num",
+      "task_id": "HQ06",
+      "stage": "final",
+      "human": "corrected",
+      "raw": "survived",
+      "combined": "survived",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": []
+    },
+    {
+      "review_id": "HQ08_research_num",
+      "task_id": "HQ08",
+      "stage": "research",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "survived",
+      "source": "rule_based_injection_point",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ08_summary_num",
+      "task_id": "HQ08",
+      "stage": "summary",
+      "human": "survived",
+      "raw": "amplified",
+      "combined": "amplified",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    },
+    {
+      "review_id": "HQ08_final_num",
+      "task_id": "HQ08",
+      "stage": "final",
+      "human": "survived",
+      "raw": "corrected",
+      "combined": "corrected",
+      "source": "independent_judge",
+      "dev": false,
+      "flags": [
+        "preexisting_error"
+      ]
+    }
+  ]
+}
