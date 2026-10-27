@@ -15,7 +15,11 @@ from agents.action_agent import action_node
 from injection.injector import inject_error
 from retrieval.build_index import load_documents
 from retrieval.bm25_retriever import BM25Retriever
+from agents import research_agent as _research_module
+from agents import summarizer_agent as _summarizer_module
+from agents import action_agent as _action_module
 from tracing.logger import log_run, save_raw_trace
+from tracing.run_config import build_run_config, load_retrieval_config
 
 
 class PipelineState(TypedDict):
@@ -30,14 +34,17 @@ class PipelineState(TypedDict):
     error_type: str | None
     wording: str | None
     seed: int | None
+    retrieval_query: str | None
+    condition_id: str | None
 
 
 def research_node_adapter(state):
-    top_k = 5
+    top_k = load_retrieval_config()["top_k"]
+    retrieval_query = state.get("retrieval_query") or state["question"]
     retrieval_start = perf_counter()
 
     results = retriever.retrieve(
-        query=state["question"],
+        query=retrieval_query,
         top_k=top_k,
     )
 
@@ -47,7 +54,8 @@ def research_node_adapter(state):
         {
             "agent": "retriever",
             "retrieval": {
-                "query": state["question"],
+                "query": retrieval_query,
+                "agent_question": state["question"],
                 "retriever_type": "BM25",
                 "top_k": top_k,
                 "retrieved_document_ids": [
@@ -216,19 +224,44 @@ def run_pipeline(
     error_type=None,
     wording=None,
     seed=None,
+    condition=None,
 ):
     from tracing.model_registry import load_model_config, validate_model_registry
 
     validate_model_registry(load_model_config())
 
+    if condition is not None:
+        if condition.get("task_id") != task["task_id"]:
+            raise ValueError("Condition task_id does not match the task.")
+        for key in ("condition_id", "question", "retrieval_query"):
+            if not condition.get(key):
+                raise ValueError(f"Condition is missing {key}.")
+        agent_question = condition["question"]
+        retrieval_query = condition["retrieval_query"]
+    else:
+        agent_question = task["question"]
+        retrieval_query = task["question"]
+
     initial_state = {
         "task_id": task["task_id"],
-        "question": task["question"],
+        "question": agent_question,
+        "retrieval_query": retrieval_query,
+        "condition_id": condition["condition_id"] if condition else None,
         "context": task["context"],
         "research_output": {},
         "summary": {},
         "final_answer": {},
-        "trace": [],
+        "trace": [
+            build_run_config(
+                {
+                    "research": _research_module.llm,
+                    "summarizer": _summarizer_module.llm,
+                    "action": _action_module.llm,
+                },
+                seed=seed,
+                condition=condition,
+            )
+        ],
         "inject": inject,
         "error_type": error_type,
         "wording": wording,

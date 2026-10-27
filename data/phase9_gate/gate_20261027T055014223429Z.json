@@ -1,0 +1,70 @@
+{
+  "status": "gate_check_not_signoff",
+  "results": [
+    {
+      "item": "Gold answer never reaches a generation agent",
+      "status": "PASS",
+      "detail": "15 passed in 1.77s; eval_only references in agents/pipelines: none"
+    },
+    {
+      "item": "Confidence fully removed from generation",
+      "status": "PASS",
+      "detail": "1 passed in 0.16s; parsing-only regex terminators: ['injection/error_bank.py:50', 'injection/error_bank.py:77']; unexplained hits: none; documented in notes: True"
+    },
+    {
+      "item": "Retrieval logged for every run",
+      "status": "PASS",
+      "detail": "57/57 traces have a retriever entry with document ids"
+    },
+    {
+      "item": "Model registry populated and independence assertion passes",
+      "status": "PASS",
+      "detail": "5 passed in 0.23s"
+    },
+    {
+      "item": "Evaluator isolated from generation",
+      "status": "PASS",
+      "detail": "14 passed in 1.74s"
+    },
+    {
+      "item": "All four conditions (C1-C4) work and are reproducible",
+      "status": "PASS",
+      "detail": "11 passed in 0.27s; run_pipeline consumes conditions: True; tasks with all of C1-C4 in batch: ['HQ00', 'HQ02']; problems: none; documented: True"
+    },
+    {
+      "item": "Clean control (no injection) works",
+      "status": "PASS",
+      "detail": "4 logged C1 baseline runs (injector entries: none); 22 older baseline traces, C1 by construction but not logged (injector entries: none)"
+    },
+    {
+      "item": "Error injection validated, bounded, logged",
+      "status": "PASS",
+      "detail": "4 passed in 0.13s; 15 injected traces, missing metadata: none; 7 runs rejected by validators (report this rate)"
+    },
+    {
+      "item": "Error injection reproducible",
+      "status": "PASS",
+      "detail": "19 injected traces store the replay fields (missing: none); clean original_output (audit only, not needed to replay) present in 17/19, absent in older records: ['5156558Z/HQ00.json', '5156558Z/HQ03.json']; standard is replay by stored corrupted_output, not regeneration by seed; documented: True"
+    },
+    {
+      "item": "Raw JSON trace is complete and reconstructable",
+      "status": "PASS",
+      "detail": "1 passed in 0.00s; traces with missing stages: none"
+    },
+    {
+      "item": "All metrics compute correctly on known/toy examples",
+      "status": "PASS",
+      "detail": "44 passed in 3.88s"
+    },
+    {
+      "item": "10-20 manually labeled runs agree with automated evaluation",
+      "status": "PASS",
+      "detail": "13 fully human-labeled runs; agreement recorded as report-only (55.0% exact, kappa 0.398, held-out n=20); documented: True"
+    },
+    {
+      "item": "All config parameters logged per run",
+      "status": "PASS",
+      "detail": "20 post-fix traces (16 baseline, 4 injected), incomplete: none; failed batch runs: none; pre-fix traces without run_config: 37/37 (kept, not used as evidence); documented: True"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "task_id": "HQ00",
+  "condition_id": "C1",
+  "injected": false,
+  "seed": 42,
+  "error_type": null,
+  "wording": null,
+  "purpose": "phase9_technical_validation_not_an_experiment_result",
+  "status": "ok",
+  "trace": [
+    {
+      "agent": "run_config",
+      "config": {
+        "generation": {
+          "research": {
+            "model": "llama3.1:latest",
+            "temperature": 0.0,
+            "num_predict": null
+          },
+          "summarizer": {
+            "model": "llama3.1:latest",
+            "temperature": 0.5,
+            "num_predict": null
+          },
+          "action": {
+            "model": "llama3.1:latest",
+            "temperature": 0.5,
+            "num_predict": null
+          }
+        },
+        "evaluator_model": "mistral:latest",
+        "generation_models_are_fully_distinct": false,
+        "max_tokens_enforced": false,
+        "max_tokens_note": "The agents pass max_tokens to ChatOllama (langchain-ollama 1.1.0), which does not apply it; num_predict is unset, so output length is not capped by the code.",
+        "retrieval": {
+          "retriever_type": "BM25",
+          "top_k": 5
+        },
+        "seed": 42,
+        "condition_id": "C1",
+        "condition": {
+          "task_id": "HQ00",
+          "condition_id": "C1",
+          "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+          "retrieval_query": "Were Scott Derrickson and Ed Wood of the same nationality?",
+          "perturbed_source_task_id": "HQ03",
+          "perturbed_context_document_id": "HQ03_DOC06",
+          "seed": 42,
+          "offset": 1
+        }
+      }
+    },
+    {
+      "agent": "retriever",
+      "retrieval": {
+        "query": "Were Scott Derrickson and Ed Wood of the same nationality?",
+        "agent_question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+        "retriever_type": "BM25",
+        "top_k": 5,
+        "retrieved_document_ids": [
+          "HQ00_DOC02",
+          "HQ00_DOC08",
+          "HQ00_DOC00",
+          "HQ00_DOC07",
+          "HQ00_DOC09"
+        ],
+        "retrieved_titles": [
+          "Woodson, Arkansas",
+          "Conrad Brooks",
+          "Ed Wood (film)",
+          "Sinister (film)",
+          "Doctor Strange (2016 film)"
+        ],
+        "retrieval_scores": [
+          16.142595689770204,
+          12.24594163311165,
+          12.211483300217022,
+          12.191942803072545,
+          11.774602086371642
+        ],
+        "retrieval_rank": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "retrieval_latency": 0.00025529100093990564
+      }
+    },
+    {
+      "agent": "research",
+      "output": {
+        "output": "FINDING: Scott Derrickson and Ed Wood were of different nationalities.\n\nEVIDENCE: Scott Derrickson is the director of the 2016 film \"Doctor Strange\", which is part of the Marvel Cinematic Universe, and is therefore American. Ed Wood is also American, as stated in the context of the film \"Ed Wood\" (1994), which is also American."
+      }
+    },
+    {
+      "agent": "summarizer",
+      "output": {
+        "output": "SUMMARY: Scott Derrickson and Ed Wood are of different nationalities, with Scott Derrickson being American and Ed Wood also being American."
+      }
+    },
+    {
+      "agent": "action",
+      "output": {
+        "output": "FINAL ANSWER: Yes"
+      }
+    }
+  ],
+  "final_output": {
+    "output": "FINAL ANSWER: Yes"
+  }
+}
